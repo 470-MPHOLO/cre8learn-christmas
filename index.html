@@ -12,565 +12,499 @@
         }
         
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #0c3b24 0%, #1a1a2e 100%);
-            color: white;
+            font-family: 'Georgia', serif;
+            background: #0a1f14;
+            color: #f0f0f0;
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
+            line-height: 1.6;
         }
         
-        /* Simple Christmas Beat */
-        .beat-container {
+        /* Soft background */
+        .bg-overlay {
             position: fixed;
-            bottom: 0;
+            top: 0;
             left: 0;
             width: 100%;
-            height: 100px;
-            background: rgba(0, 0, 0, 0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 20px;
-            z-index: 1;
-            border-top: 2px solid rgba(212, 175, 55, 0.3);
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(179, 45, 46, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(45, 92, 42, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
+            z-index: -1;
         }
         
-        .beat-element {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: #b32d2e;
-            box-shadow: 0 0 15px rgba(179, 45, 46, 0.7);
-            animation: beatPulse 1s infinite;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-        }
-        
-        .beat-element:nth-child(2) {
-            background: #d4af37;
-            animation-delay: 0.25s;
-        }
-        
-        .beat-element:nth-child(3) {
-            background: #2d5c2a;
-            animation-delay: 0.5s;
-        }
-        
-        .beat-element:nth-child(4) {
-            background: #1e90ff;
-            animation-delay: 0.75s;
-        }
-        
-        @keyframes beatPulse {
-            0%, 100% { transform: scale(1); opacity: 0.7; }
-            50% { transform: scale(1.2); opacity: 1; }
-        }
-        
-        /* Beat Controls */
-        .beat-control {
+        /* Music Control */
+        .music-control {
             position: fixed;
-            bottom: 120px;
+            top: 20px;
             right: 20px;
             z-index: 100;
         }
         
-        .beat-btn {
-            width: 70px;
-            height: 70px;
+        .music-btn {
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
-            border: none;
-            background: #b32d2e;
-            color: white;
-            font-size: 30px;
+            border: 2px solid rgba(212, 175, 55, 0.5);
+            background: rgba(0, 0, 0, 0.3);
+            color: #d4af37;
+            font-size: 24px;
             cursor: pointer;
-            box-shadow: 0 0 20px rgba(179, 45, 46, 0.7);
+            backdrop-filter: blur(5px);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 10px;
-            transition: transform 0.2s;
+            transition: all 0.3s ease;
         }
         
-        .beat-btn:hover {
+        .music-btn:hover {
             transform: scale(1.1);
+            border-color: #d4af37;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
         }
         
         /* Main Container */
         .container {
-            max-width: 1200px;
+            max-width: 800px;
             margin: 0 auto;
             padding: 40px 20px;
             position: relative;
-            z-index: 10;
         }
         
         /* Header */
         .header {
             text-align: center;
-            padding: 40px;
+            padding: 40px 0;
             margin-bottom: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            border: 3px solid rgba(212, 175, 55, 0.3);
+            position: relative;
+        }
+        
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 20%;
+            right: 20%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.5), transparent);
         }
         
         .institute-name {
-            font-size: 2.8rem;
-            color: #4cd964;
+            font-size: 2.5rem;
+            color: #e8e8e8;
             margin-bottom: 10px;
+            letter-spacing: 1px;
         }
         
         .christmas-title {
-            font-size: 4.5rem;
-            color: #ff6b6b;
+            font-size: 3.5rem;
+            color: #d4af37;
             margin: 20px 0;
-            text-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
+            font-weight: normal;
+            letter-spacing: 2px;
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
         }
         
         .year {
-            display: inline-block;
-            padding: 10px 25px;
-            background: rgba(212, 175, 55, 0.2);
-            border-radius: 30px;
             font-size: 1.2rem;
+            color: #b3b3b3;
             margin-top: 10px;
+            letter-spacing: 3px;
         }
         
         /* Content */
         .content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-bottom: 50px;
-        }
-        
-        @media (max-width: 768px) {
-            .content {
-                grid-template-columns: 1fr;
-            }
+            padding: 30px 0;
         }
         
         .message-box {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 30px;
-            border-radius: 15px;
-            backdrop-filter: blur(5px);
-            border: 2px solid rgba(212, 175, 55, 0.2);
-        }
-        
-        .message-box h2 {
-            color: #d4af37;
-            margin-bottom: 20px;
-            font-size: 1.8rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            margin-bottom: 40px;
         }
         
         .message-box p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 15px;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            line-height: 1.8;
         }
         
-        /* Visual Elements */
-        .visuals {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+        .highlight {
+            padding: 20px;
+            margin: 30px 0;
+            background: rgba(45, 92, 42, 0.2);
+            border-left: 3px solid #2d5c2a;
+            border-radius: 0 5px 5px 0;
         }
         
-        .tree-simple {
-            width: 200px;
-            height: 250px;
-            position: relative;
-            margin-bottom: 30px;
+        /* Simple Visual */
+        .visual {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px;
         }
         
-        .tree-simple div {
-            position: absolute;
-            width: 0;
-            height: 0;
-            border-left: 80px solid transparent;
-            border-right: 80px solid transparent;
-            border-bottom: 120px solid #2d9a2d;
-            bottom: 0;
-            left: 20px;
-            animation: treeGlow 2s infinite alternate;
+        .simple-tree {
+            display: inline-block;
+            font-size: 80px;
+            animation: gentlePulse 4s infinite ease-in-out;
+            filter: drop-shadow(0 0 20px rgba(45, 92, 42, 0.5));
         }
         
-        .tree-simple div:nth-child(2) {
-            top: 40px;
-            border-left-width: 60px;
-            border-right-width: 60px;
-            border-bottom-width: 90px;
-            left: 40px;
-            border-bottom-color: #1e7a1e;
-            animation-delay: 0.5s;
-        }
-        
-        .tree-simple div:nth-child(3) {
-            top: 80px;
-            border-left-width: 40px;
-            border-right-width: 40px;
-            border-bottom-width: 60px;
-            left: 60px;
-            border-bottom-color: #0f5a0f;
-            animation-delay: 1s;
-        }
-        
-        @keyframes treeGlow {
-            0% { filter: brightness(1); }
-            100% { filter: brightness(1.3); }
+        @keyframes gentlePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
         
         /* Footer */
         footer {
             text-align: center;
-            padding: 40px;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 20px;
+            padding: 40px 0;
             margin-top: 40px;
-            border: 2px solid rgba(212, 175, 55, 0.2);
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
         }
         
         .contact-info {
-            background: rgba(212, 175, 55, 0.1);
+            margin: 30px 0;
             padding: 20px;
-            border-radius: 15px;
-            margin: 20px 0;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
         }
         
         .email {
-            display: inline-block;
-            padding: 15px 30px;
-            background: linear-gradient(45deg, #b32d2e, #d4af37);
-            color: white;
+            color: #d4af37;
+            font-size: 1.1rem;
             text-decoration: none;
-            border-radius: 30px;
-            font-size: 1.2rem;
-            margin: 15px 0;
-            transition: transform 0.3s;
+            border-bottom: 1px dotted rgba(212, 175, 55, 0.5);
+            padding-bottom: 2px;
+            transition: all 0.3s ease;
         }
         
         .email:hover {
-            transform: scale(1.05);
+            color: #ffd700;
+            border-bottom-color: #ffd700;
         }
         
         .resume-date {
-            color: #4cd964;
-            font-size: 1.5rem;
-            margin: 25px 0;
+            font-size: 1.3rem;
+            color: #b3b3b3;
+            margin: 30px 0;
             padding: 15px;
-            background: rgba(76, 217, 100, 0.1);
-            border-radius: 15px;
+            background: rgba(179, 45, 46, 0.1);
+            border-radius: 5px;
             display: inline-block;
         }
         
-        /* Snow */
-        .snow {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background: white;
+        /* Firefly Effects */
+        .firefly {
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            background: rgba(212, 175, 55, 0.8);
             border-radius: 50%;
             pointer-events: none;
+            z-index: -1;
+            box-shadow: 0 0 10px 2px rgba(212, 175, 55, 0.5);
+        }
+        
+        /* Subtle Snow */
+        .snow {
+            position: fixed;
+            width: 2px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
             opacity: 0.8;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .christmas-title {
+                font-size: 2.5rem;
+            }
+            
+            .institute-name {
+                font-size: 2rem;
+            }
+            
+            .message-box {
+                padding: 30px 20px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Christmas Beat -->
-    <div class="beat-container" id="beatContainer">
-        <div class="beat-element">🎄</div>
-        <div class="beat-element">🔔</div>
-        <div class="beat-element">🌟</div>
-        <div class="beat-element">🎁</div>
+    <!-- Background -->
+    <div class="bg-overlay"></div>
+    
+    <!-- Music Control -->
+    <div class="music-control">
+        <button class="music-btn" id="musicBtn">♪</button>
     </div>
     
-    <!-- Beat Control -->
-    <div class="beat-control">
-        <button class="beat-btn" id="beatBtn">🎵</button>
-    </div>
-    
-    <!-- Snow -->
+    <!-- Animated Elements -->
+    <div id="fireflies"></div>
     <div id="snow"></div>
     
     <div class="container">
         <header class="header">
-            <h1 class="institute-name">Cre8learn Institute</h1>
-            <div class="christmas-title">MERRY CHRISTMAS</div>
-            <h2>Simple Christmas Beat • 2025</h2>
+            <div class="institute-name">Cre8learn Institute</div>
+            <div class="christmas-title">Merry Christmas</div>
             <div class="year">December 25, 2025</div>
         </header>
         
         <div class="content">
             <div class="message-box">
-                <h2>🎄 Christmas Greetings</h2>
-                <p>From all of us at Cre8learn Institute, we wish you a joyful Christmas filled with peace, happiness, and wonderful moments with loved ones.</p>
-                <p>May this festive season bring you warmth and cheer, and may the coming year be filled with learning, growth, and success.</p>
-                <p>Enjoy the simple Christmas beat - it's our gift of holiday rhythm to you!</p>
+                <p>On this peaceful Christmas Day, we extend our warmest greetings to our students, faculty, and partners around the world.</p>
                 
-                <div style="margin-top: 30px; padding: 20px; background: rgba(179, 45, 46, 0.1); border-radius: 10px;">
-                    <h3>📅 Holiday Schedule</h3>
-                    <p style="margin-top: 10px;">
-                        <strong>Christmas Day (Today):</strong> Celebrating<br>
-                        <strong>Dec 26 - Jan 4:</strong> Institute Break<br>
-                        <strong>Jan 5, 2026:</strong> Operations Resume
-                    </p>
+                <div class="highlight">
+                    May this season bring you moments of quiet reflection, joy in simple pleasures, and time to cherish with loved ones.
                 </div>
+                
+                <p>As we celebrate this special day, we're grateful for the community we've built together. Here's to a new year filled with learning, growth, and shared success.</p>
+                
+                <p style="margin-top: 30px; font-style: italic; color: #d4af37;">
+                    The gentle Christmas instrumental music is playing softly in the background. 
+                    Click the ♪ button to control the volume.
+                </p>
             </div>
             
-            <div class="visuals">
-                <div class="tree-simple">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
-                <div style="text-align: center; margin-top: 30px;">
-                    <p style="font-size: 1.3rem; color: #d4af37;">
-                        Tap the beat elements below<br>
-                        to play Christmas sounds!
-                    </p>
-                </div>
+            <div class="visual">
+                <div class="simple-tree">🎄</div>
             </div>
         </div>
         
         <footer>
-            <div style="font-size: 2rem; color: #d4af37; margin-bottom: 20px;">
-                Cre8learn Institute
-            </div>
-            
             <div class="contact-info">
-                <p>For urgent matters during the break:</p>
+                <p style="margin-bottom: 15px;">For urgent matters during the holiday break:</p>
                 <a href="mailto:cre8learn_instute@outlook.com" class="email">
                     cre8learn_instute@outlook.com
                 </a>
             </div>
             
             <div class="resume-date">
-                🗓️ Back on January 5, 2026
+                Operations resume January 5, 2026
             </div>
             
-            <div style="margin-top: 40px; opacity: 0.8; font-size: 0.9rem;">
-                &copy; 2025 Cre8learn Institute • Merry Christmas! 🎅
+            <div style="margin-top: 40px; color: #888; font-size: 0.9rem;">
+                &copy; 2025 Cre8learn Institute<br>
+                Wishing you peace and joy this Christmas
             </div>
         </footer>
     </div>
 
     <script>
-        // Simple Christmas Beat System
-        let beatActive = true;
+        // Simple, slow Christmas instrumental
         let audioContext;
-        let beatSounds = [];
+        let isPlaying = false;
+        let volume = 0.15; // Very soft volume
         
-        // Create snow
-        function createSnow() {
-            const container = document.getElementById('snow');
-            for (let i = 0; i < 30; i++) {
-                const snowflake = document.createElement('div');
-                snowflake.className = 'snow';
-                
-                snowflake.style.left = `${Math.random() * 100}vw`;
-                snowflake.style.top = `${Math.random() * 100}vh`;
-                snowflake.style.animation = `fall ${5 + Math.random() * 10}s linear infinite`;
-                snowflake.style.animationDelay = `${Math.random() * 5}s`;
-                snowflake.style.opacity = Math.random() * 0.8 + 0.2;
-                
-                // Add falling animation
-                const style = document.createElement('style');
-                style.textContent = `
-                    @keyframes fall {
-                        to { transform: translateY(100vh); }
-                    }
-                `;
-                document.head.appendChild(style);
-                
-                container.appendChild(snowflake);
-            }
-        }
-        
-        // Simple Christmas beat sounds
-        function createBeatSounds() {
+        // Create peaceful background music
+        function createChristmasInstrumental() {
             if (!audioContext) {
                 audioContext = new (window.AudioContext || window.webkitAudioContext)();
             }
             
-            // Four different Christmas sounds
-            beatSounds = [
-                function() { // 🎄 - Bass drum
-                    const oscillator = audioContext.createOscillator();
-                    const gainNode = audioContext.createGain();
-                    
-                    oscillator.connect(gainNode);
-                    gainNode.connect(audioContext.destination);
-                    
-                    oscillator.frequency.value = 100;
-                    oscillator.type = 'sine';
-                    
-                    gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-                    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
-                    
-                    oscillator.start();
-                    oscillator.stop(audioContext.currentTime + 0.5);
-                },
-                function() { // 🔔 - Bell
-                    const oscillator = audioContext.createOscillator();
-                    const gainNode = audioContext.createGain();
-                    
-                    oscillator.connect(gainNode);
-                    gainNode.connect(audioContext.destination);
-                    
-                    oscillator.frequency.value = 800;
-                    oscillator.type = 'sine';
-                    
-                    gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
-                    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 1);
-                    
-                    oscillator.start();
-                    oscillator.stop(audioContext.currentTime + 1);
-                },
-                function() { // 🌟 - Chime
-                    const oscillator = audioContext.createOscillator();
-                    const gainNode = audioContext.createGain();
-                    
-                    oscillator.connect(gainNode);
-                    gainNode.connect(audioContext.destination);
-                    
-                    oscillator.frequency.value = 523.25; // C5
-                    oscillator.type = 'triangle';
-                    
-                    gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
-                    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.8);
-                    
-                    oscillator.start();
-                    oscillator.stop(audioContext.currentTime + 0.8);
-                },
-                function() { // 🎁 - Percussion
-                    const oscillator = audioContext.createOscillator();
-                    const gainNode = audioContext.createGain();
-                    
-                    oscillator.connect(gainNode);
-                    gainNode.connect(audioContext.destination);
-                    
-                    oscillator.frequency.value = 200;
-                    oscillator.type = 'square';
-                    
-                    gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-                    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
-                    
-                    oscillator.start();
-                    oscillator.stop(audioContext.currentTime + 0.3);
-                }
+            // Slow, gentle chord progression for Christmas
+            const chords = [
+                {notes: ['C', 'E', 'G'], duration: 4},  // C major
+                {notes: ['F', 'A', 'C'], duration: 4},  // F major
+                {notes: ['G', 'B', 'D'], duration: 4},  // G major
+                {notes: ['C', 'E', 'G'], duration: 4},  // C major
+                {notes: ['A', 'C', 'E'], duration: 4},  // A minor
+                {notes: ['F', 'A', 'C'], duration: 4},  // F major
+                {notes: ['G', 'B', 'D'], duration: 4},  // G major
+                {notes: ['C', 'E', 'G'], duration: 8}   // C major (longer)
             ];
-        }
-        
-        // Setup beat interactions
-        function setupBeat() {
-            const beatElements = document.querySelectorAll('.beat-element');
-            const beatBtn = document.getElementById('beatBtn');
             
-            // Play sound when clicking beat elements
-            beatElements.forEach((element, index) => {
-                element.addEventListener('click', function() {
-                    if (!audioContext) {
-                        createBeatSounds();
-                    }
-                    
-                    if (beatActive) {
-                        // Play corresponding sound
-                        beatSounds[index]();
-                        
-                        // Visual feedback
-                        this.style.transform = 'scale(1.5)';
-                        setTimeout(() => {
-                            this.style.transform = 'scale(1)';
-                        }, 200);
-                    }
+            // Note frequencies (middle octave)
+            const noteFreq = {
+                'C': 261.63,
+                'D': 293.66,
+                'E': 329.63,
+                'F': 349.23,
+                'G': 392.00,
+                'A': 440.00,
+                'B': 493.88
+            };
+            
+            let chordIndex = 0;
+            let startTime = audioContext.currentTime;
+            
+            function playNextChord() {
+                if (!isPlaying) return;
+                
+                const chord = chords[chordIndex];
+                const chordTime = startTime;
+                
+                // Play each note in the chord
+                chord.notes.forEach(note => {
+                    playChordNote(noteFreq[note], chordTime, chord.duration);
                 });
-            });
-            
-            // Beat toggle button
-            beatBtn.addEventListener('click', function() {
-                beatActive = !beatActive;
                 
-                if (beatActive) {
-                    this.innerHTML = '🎵';
-                    this.style.background = '#b32d2e';
-                    
-                    // Resume beat animations
-                    beatElements.forEach(el => {
-                        el.style.animationPlayState = 'running';
-                    });
-                } else {
-                    this.innerHTML = '🔇';
-                    this.style.background = '#666';
-                    
-                    // Pause beat animations
-                    beatElements.forEach(el => {
-                        el.style.animationPlayState = 'paused';
-                    });
-                }
-            });
-            
-            // Auto-play simple beat pattern
-            let beatPattern = [0, 1, 2, 3];
-            let currentBeat = 0;
-            
-            function playBeatPattern() {
-                if (!beatActive) return;
-                
-                // Visual highlight
-                beatElements.forEach(el => el.style.opacity = '0.7');
-                beatElements[currentBeat].style.opacity = '1';
-                beatElements[currentBeat].style.transform = 'scale(1.3)';
-                
-                // Play sound every 2nd beat for subtle rhythm
-                if (currentBeat % 2 === 0) {
-                    if (beatSounds[currentBeat]) {
-                        setTimeout(() => {
-                            if (beatActive) {
-                                beatSounds[currentBeat]();
-                            }
-                        }, 100);
-                    }
-                }
-                
-                // Reset transform
+                // Play a gentle bell-like melody on top
                 setTimeout(() => {
-                    beatElements[currentBeat].style.transform = 'scale(1)';
-                }, 200);
+                    if (!isPlaying) return;
+                    playMelodyNote(chordIndex, chordTime + 1);
+                }, 1000);
                 
-                // Next beat
-                currentBeat = (currentBeat + 1) % beatPattern.length;
+                // Move to next chord
+                chordIndex = (chordIndex + 1) % chords.length;
+                startTime += chord.duration;
                 
-                // Continue pattern
-                setTimeout(playBeatPattern, 500);
+                // Schedule next chord
+                setTimeout(playNextChord, chord.duration * 1000);
             }
             
-            // Start beat pattern after user interaction
-            document.body.addEventListener('click', function startBeat() {
+            function playChordNote(frequency, startTime, duration) {
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.frequency.value = frequency;
+                oscillator.type = 'sine'; // Soft sine wave
+                
+                // Very gentle envelope
+                gainNode.gain.setValueAtTime(0, startTime);
+                gainNode.gain.linearRampToValueAtTime(volume * 0.3, startTime + 0.5);
+                gainNode.gain.exponentialRampToValueAtTime(0.001, startTime + duration - 0.5);
+                gainNode.gain.linearRampToValueAtTime(0, startTime + duration);
+                
+                oscillator.start(startTime);
+                oscillator.stop(startTime + duration);
+            }
+            
+            function playMelodyNote(chordIndex, startTime) {
+                // Simple, slow melody notes
+                const melodyNotes = ['C', 'E', 'G', 'E', 'C', 'A', 'G', 'E'];
+                const note = melodyNotes[chordIndex % melodyNotes.length];
+                
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.frequency.value = noteFreq[note] * 2; // Higher octave
+                oscillator.type = 'triangle'; // Soft triangle wave
+                
+                // Even softer melody
+                gainNode.gain.setValueAtTime(0, startTime);
+                gainNode.gain.linearRampToValueAtTime(volume * 0.2, startTime + 0.2);
+                gainNode.gain.exponentialRampToValueAtTime(0.001, startTime + 2);
+                
+                oscillator.start(startTime);
+                oscillator.stop(startTime + 2);
+            }
+            
+            return playNextChord;
+        }
+        
+        // Create fireflies
+        function createFireflies() {
+            const container = document.getElementById('fireflies');
+            for (let i = 0; i < 8; i++) {
+                const firefly = document.createElement('div');
+                firefly.className = 'firefly';
+                
+                firefly.style.left = `${Math.random() * 100}vw`;
+                firefly.style.top = `${Math.random() * 100}vh`;
+                
+                // Gentle floating animation
+                firefly.animate([
+                    { transform: 'translate(0, 0)', opacity: 0.3 },
+                    { transform: `translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px)`, opacity: 0.8 },
+                    { transform: 'translate(0, 0)', opacity: 0.3 }
+                ], {
+                    duration: 8000 + Math.random() * 12000,
+                    iterations: Infinity,
+                    easing: 'ease-in-out'
+                });
+                
+                container.appendChild(firefly);
+            }
+        }
+        
+        // Create gentle snow
+        function createSnow() {
+            const container = document.getElementById('snow');
+            for (let i = 0; i < 20; i++) {
+                const flake = document.createElement('div');
+                flake.className = 'snow';
+                
+                flake.style.left = `${Math.random() * 100}vw`;
+                
+                // Very slow falling animation
+                flake.animate([
+                    { transform: 'translateY(-100vh)', opacity: 0 },
+                    { transform: 'translateY(100vh)', opacity: 0.8 }
+                ], {
+                    duration: 20000 + Math.random() * 20000,
+                    iterations: Infinity,
+                    easing: 'linear',
+                    delay: Math.random() * 10000
+                });
+                
+                container.appendChild(flake);
+            }
+        }
+        
+        // Setup music control
+        function setupMusic() {
+            const musicBtn = document.getElementById('musicBtn');
+            let playMusic;
+            
+            // Initialize music on first click
+            musicBtn.addEventListener('click', function() {
                 if (!audioContext) {
-                    createBeatSounds();
+                    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                    playMusic = createChristmasInstrumental();
                 }
-                playBeatPattern();
-                document.body.removeEventListener('click', startBeat);
+                
+                if (isPlaying) {
+                    // Stop music
+                    isPlaying = false;
+                    this.innerHTML = '♪';
+                    this.style.color = '#d4af37';
+                    this.style.borderColor = 'rgba(212, 175, 55, 0.5)';
+                } else {
+                    // Start music
+                    isPlaying = true;
+                    this.innerHTML = '♫';
+                    this.style.color = '#ffd700';
+                    this.style.borderColor = '#ffd700';
+                    playMusic();
+                }
+            });
+            
+            // Auto-start music after user interaction
+            document.body.addEventListener('click', function initMusic() {
+                if (!isPlaying) {
+                    musicBtn.click();
+                }
+                document.body.removeEventListener('click', initMusic);
             }, { once: true });
         }
         
-        // Initialize
+        // Initialize everything
         document.addEventListener('DOMContentLoaded', function() {
+            createFireflies();
             createSnow();
-            setupBeat();
+            setupMusic();
             
-            console.log('%c🎄 Simple Christmas Beat 🎄', 
-                'background: linear-gradient(90deg, red, green); color: white; font-size: 18px; padding: 10px; border-radius: 5px;');
-            console.log('%cClick the beat elements to play sounds!', 
-                'color: #d4af37;');
+            console.log('%c🎄 Silent Night Instrumental 🎄', 
+                'color: #d4af37; font-size: 16px;');
+            console.log('%cPeaceful Christmas music playing softly...', 
+                'color: #888;');
         });
     </script>
 </body>
