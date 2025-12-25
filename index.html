@@ -9,16 +9,10 @@
     <meta name="robots" content="index, follow">
     <title>Merry Christmas from Cre8learn Institute</title>
     
-    <!-- Open Graph / Social Media Meta Tags -->
-    <meta property="og:title" content="Merry Christmas from Cre8learn Institute">
-    <meta property="og:description" content="Wishing everyone a joyful Christmas season filled with learning and celebration!">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://cre8learn.github.io/christmas-greeting">
-    
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎄</text></svg>">
     
-    <!-- Google Fonts for Christmas feel -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     
     <!-- CSS -->
@@ -30,7 +24,6 @@
             --christmas-blue: #0c3b24;
             --snow-white: #f8f9fa;
             --text-dark: #333333;
-            --twinkle-duration: 3s;
         }
         
         * {
@@ -47,42 +40,6 @@
             min-height: 100vh;
             position: relative;
             overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
-                radial-gradient(circle at 90% 80%, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
-        }
-        
-        /* Christmas Lights Background */
-        .christmas-lights {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
-        
-        .light {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            filter: blur(2px);
-            animation: lightTwinkle var(--twinkle-duration) infinite alternate;
-        }
-        
-        @keyframes lightTwinkle {
-            0%, 100% { 
-                opacity: 0.3; 
-                transform: scale(1);
-            }
-            50% { 
-                opacity: 1; 
-                transform: scale(1.2);
-                box-shadow: 0 0 20px currentColor;
-            }
         }
         
         /* Snowfall Effect */
@@ -100,6 +57,30 @@
             to {
                 transform: translateY(100vh) rotate(360deg);
             }
+        }
+        
+        /* Animated Background Lights */
+        .bg-lights {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .light {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            animation: twinkle 3s infinite alternate;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.3); box-shadow: 0 0 15px currentColor; }
         }
         
         /* Main Container */
@@ -122,25 +103,6 @@
             border: 12px solid var(--christmas-gold);
             position: relative;
             overflow: hidden;
-            backdrop-filter: blur(10px);
-        }
-        
-        header::before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            background: linear-gradient(45deg, var(--christmas-red), var(--christmas-gold), var(--christmas-green));
-            z-index: -1;
-            border-radius: 35px;
-            animation: borderGlow 4s infinite alternate;
-        }
-        
-        @keyframes borderGlow {
-            0% { opacity: 0.3; }
-            100% { opacity: 0.7; }
         }
         
         .institute-name {
@@ -149,7 +111,6 @@
             font-size: 3.2rem;
             margin-bottom: 15px;
             text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
-            letter-spacing: 1px;
         }
         
         .christmas-title {
@@ -157,22 +118,18 @@
             font-family: 'Mountains of Christmas', cursive;
             font-size: 5rem;
             margin: 30px 0;
-            animation: titleGlow 2s ease-in-out infinite alternate;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            animation: glow 2s infinite alternate;
         }
         
-        @keyframes titleGlow {
-            from {
+        @keyframes glow {
+            from { 
                 text-shadow: 0 0 20px rgba(255, 255, 255, 0.8),
-                             0 0 30px var(--christmas-red),
-                             0 0 40px var(--christmas-red);
+                             0 0 30px var(--christmas-red);
             }
-            to {
+            to { 
                 text-shadow: 0 0 25px rgba(255, 255, 255, 1),
                              0 0 40px var(--christmas-gold),
-                             0 0 60px var(--christmas-gold),
-                             0 0 80px var(--christmas-gold);
+                             0 0 60px var(--christmas-gold);
             }
         }
         
@@ -208,14 +165,6 @@
             border-radius: 20px;
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
             border-top: 8px solid var(--christmas-red);
-            backdrop-filter: blur(10px);
-            transform-style: preserve-3d;
-            perspective: 1000px;
-        }
-        
-        .message-card:hover {
-            transform: translateY(-10px);
-            transition: transform 0.3s ease;
         }
         
         .message-card h2 {
@@ -233,12 +182,12 @@
             line-height: 1.8;
         }
         
-        .highlight-box {
-            background: linear-gradient(135deg, rgba(179, 45, 46, 0.1), rgba(212, 175, 55, 0.1));
-            border-left: 5px solid var(--christmas-red);
+        .highlight {
+            background: rgba(179, 45, 46, 0.1);
             padding: 20px;
             border-radius: 10px;
             margin: 25px 0;
+            border-left: 5px solid var(--christmas-red);
         }
         
         /* Christmas Tree Section */
@@ -250,10 +199,10 @@
             justify-content: center;
         }
         
-        .mega-tree {
+        .christmas-tree {
             position: relative;
-            width: 300px;
-            height: 450px;
+            width: 320px;
+            height: 480px;
             margin-bottom: 40px;
         }
         
@@ -261,48 +210,53 @@
             position: absolute;
             width: 0;
             height: 0;
-            border-left: 150px solid transparent;
-            border-right: 150px solid transparent;
-            border-bottom: 200px solid;
+            border-left: 160px solid transparent;
+            border-right: 160px solid transparent;
+            border-bottom: 220px solid;
             bottom: 0;
             left: 0;
             animation: treeGlow 4s infinite alternate;
         }
         
-        .layer-1 { border-bottom-color: #0f5a0f; z-index: 3; }
+        .layer-1 { 
+            border-bottom-color: #0f5a0f; 
+            z-index: 3; 
+        }
+        
         .layer-2 { 
             border-bottom-color: #1e7a1e; 
-            top: 60px;
-            border-left-width: 120px;
-            border-right-width: 120px;
-            border-bottom-width: 160px;
+            top: 70px;
+            border-left-width: 130px;
+            border-right-width: 130px;
+            border-bottom-width: 180px;
             z-index: 2;
             left: 30px;
         }
+        
         .layer-3 { 
             border-bottom-color: #2d9a2d; 
-            top: 120px;
-            border-left-width: 90px;
-            border-right-width: 90px;
-            border-bottom-width: 120px;
+            top: 140px;
+            border-left-width: 100px;
+            border-right-width: 100px;
+            border-bottom-width: 140px;
             z-index: 1;
             left: 60px;
         }
         
         @keyframes treeGlow {
             0%, 100% { filter: brightness(1); }
-            50% { filter: brightness(1.3); }
+            50% { filter: brightness(1.4); }
         }
         
         .tree-star {
             position: absolute;
-            top: -40px;
+            top: -50px;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 80px;
+            font-size: 90px;
             animation: starSpin 8s linear infinite, starGlow 2s infinite alternate;
             z-index: 4;
-            text-shadow: 0 0 30px gold;
+            cursor: pointer;
         }
         
         @keyframes starSpin {
@@ -311,10 +265,27 @@
         }
         
         @keyframes starGlow {
-            from { filter: drop-shadow(0 0 10px gold); }
-            to { filter: drop-shadow(0 0 30px gold) brightness(1.5); }
+            from { filter: drop-shadow(0 0 15px gold) brightness(1); }
+            to { filter: drop-shadow(0 0 40px gold) brightness(1.5); }
         }
         
+        /* Ornaments */
+        .ornament {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            animation: ornamentTwinkle 3s infinite alternate;
+            cursor: pointer;
+            z-index: 5;
+        }
+        
+        @keyframes ornamentTwinkle {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.3); opacity: 1; }
+        }
+        
+        /* Gift Boxes */
         .gift-boxes {
             display: flex;
             justify-content: center;
@@ -329,49 +300,16 @@
             position: relative;
             animation: giftFloat 3s infinite ease-in-out;
             cursor: pointer;
-            transform-style: preserve-3d;
-        }
-        
-        .gift-box:nth-child(1) { 
-            background: linear-gradient(45deg, var(--christmas-red), #ff6b6b); 
-            animation-delay: 0s;
-        }
-        .gift-box:nth-child(2) { 
-            background: linear-gradient(45deg, var(--christmas-green), #4cd964); 
-            animation-delay: 0.5s;
-        }
-        .gift-box:nth-child(3) { 
-            background: linear-gradient(45deg, var(--christmas-gold), #ffd700); 
-            animation-delay: 1s;
-        }
-        .gift-box:nth-child(4) { 
-            background: linear-gradient(45deg, #1e90ff, #00bfff); 
-            animation-delay: 1.5s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
         
         @keyframes giftFloat {
-            0%, 100% { transform: translateY(0) rotateX(0); }
-            50% { transform: translateY(-20px) rotateX(10deg); }
-        }
-        
-        .gift-box::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            height: 20px;
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-50%);
-        }
-        
-        .gift-box::after {
-            content: '🎁';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 30px;
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-25px); }
         }
         
         /* Controls */
@@ -380,6 +318,7 @@
             bottom: 30px;
             right: 30px;
             display: flex;
+            flex-direction: column;
             gap: 15px;
             z-index: 1000;
         }
@@ -401,11 +340,11 @@
         }
         
         .control-btn:hover {
-            transform: scale(1.1) rotate(15deg);
+            transform: scale(1.1);
             background: var(--christmas-gold);
         }
         
-        .music-toggle {
+        .music-btn {
             background: var(--christmas-green);
         }
         
@@ -417,7 +356,6 @@
             color: white;
             border-radius: 20px;
             margin-top: 50px;
-            backdrop-filter: blur(10px);
             border: 2px solid var(--christmas-gold);
         }
         
@@ -426,7 +364,6 @@
             font-size: 2.8rem;
             color: var(--christmas-gold);
             margin-bottom: 20px;
-            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
         }
         
         .contact-info {
@@ -495,7 +432,7 @@
         
         .social-icon:hover {
             background: var(--christmas-red);
-            transform: translateY(-10px) rotate(10deg);
+            transform: translateY(-10px);
         }
         
         .copyright {
@@ -516,7 +453,7 @@
                 font-size: 3.5rem;
             }
             
-            .mega-tree {
+            .christmas-tree {
                 width: 250px;
                 height: 380px;
             }
@@ -525,78 +462,56 @@
                 bottom: 20px;
                 right: 20px;
             }
-            
-            .control-btn {
-                width: 50px;
-                height: 50px;
-                font-size: 20px;
-            }
         }
         
-        /* Accessibility */
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0,0,0,0);
-            white-space: nowrap;
-            border: 0;
-        }
-        
-        /* Reduced Motion */
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-        
-        /* Christmas Bell Animation */
-        .bell-container {
+        /* Bell Animation */
+        .bell {
             position: fixed;
-            top: 50px;
-            right: 50px;
-            z-index: 100;
+            top: 30px;
+            right: 30px;
+            font-size: 60px;
             animation: bellSwing 3s infinite ease-in-out;
             transform-origin: top center;
+            cursor: pointer;
+            z-index: 100;
+            filter: drop-shadow(0 0 10px gold);
         }
         
         @keyframes bellSwing {
-            0%, 100% { transform: rotate(-15deg); }
-            50% { transform: rotate(15deg); }
+            0%, 100% { transform: rotate(-20deg); }
+            50% { transform: rotate(20deg); }
         }
         
-        .bell {
-            font-size: 60px;
-            filter: drop-shadow(0 0 10px gold);
+        /* Gift Message */
+        .gift-message {
+            color: var(--christmas-gold);
+            font-size: 1.4rem;
+            margin-top: 20px;
+            text-align: center;
+            min-height: 50px;
+            padding: 10px;
         }
     </style>
 </head>
 <body>
     <!-- Background Lights -->
-    <div class="christmas-lights" id="christmasLights"></div>
+    <div class="bg-lights" id="bgLights"></div>
     
     <!-- Snowflakes -->
-    <div id="snowflakes-container"></div>
+    <div id="snowflakes"></div>
     
-    <!-- Christmas Bell -->
-    <div class="bell-container">
-        <div class="bell" id="christmasBell">🔔</div>
-    </div>
+    <!-- Bell -->
+    <div class="bell" id="christmasBell">🔔</div>
     
     <!-- Controls -->
     <div class="controls">
-        <button class="control-btn music-toggle" id="musicToggle" aria-label="Toggle Christmas music">
+        <button class="control-btn music-btn" id="musicBtn" title="Toggle Music">
             🎵
         </button>
-        <button class="control-btn" id="bellBtn" aria-label="Ring Christmas bell">
+        <button class="control-btn" id="bellBtn" title="Ring Bell">
             🔔
         </button>
-        <button class="control-btn" id="snowBtn" aria-label="Toggle snowfall">
+        <button class="control-btn" id="snowBtn" title="Toggle Snow">
             ❄️
         </button>
     </div>
@@ -609,10 +524,6 @@
                 Wishing You Peace, Joy & Prosperous Learning
             </h2>
             <div class="year">December 25, 2025</div>
-            
-            <div class="sr-only">
-                Christmas greeting from Cre8learn Institute with interactive features
-            </div>
         </header>
         
         <main class="main-content">
@@ -620,7 +531,7 @@
                 <h2>Season's Warmest Wishes</h2>
                 <p>From all of us at Cre8learn Institute, we extend our heartfelt Christmas greetings to our students, faculty, partners, and the global learning community. Today, as we celebrate the joy of the season, we're reminded that education, like Christmas spirit, illuminates our path forward.</p>
                 
-                <div class="highlight-box">
+                <div class="highlight">
                     <p>🎄 <strong>Today's Celebration:</strong> Christmas Day 2025 is here! We hope your day is filled with laughter, warmth, and cherished moments with loved ones.</p>
                 </div>
                 
@@ -632,32 +543,25 @@
                 <p><strong>Christmas Day (Today):</strong> Celebrating with our teams and families<br>
                    <strong>December 26 - January 4:</strong> Institute Break<br>
                    <strong class="resume-date">January 5, 2026:</strong> Operations Resume</p>
-                
-                <div style="margin-top: 30px; padding: 20px; background: rgba(45, 92, 42, 0.1); border-radius: 10px;">
-                    <h4 style="color: var(--christmas-green); margin-bottom: 10px;">🎁 Christmas Learning Special:</h4>
-                    <p>Enjoy complimentary access to our "Holiday Creative Thinking" module throughout the festive season!</p>
-                </div>
             </div>
             
             <div class="tree-section">
-                <div class="mega-tree" id="megaChristmasTree">
+                <div class="christmas-tree" id="christmasTree">
                     <div class="tree-layer layer-1"></div>
                     <div class="tree-layer layer-2"></div>
                     <div class="tree-layer layer-3"></div>
                     <div class="tree-star" id="treeStar">⭐</div>
+                    <!-- Ornaments added by JavaScript -->
                 </div>
                 
                 <div class="gift-boxes">
-                    <div class="gift-box" data-gift="Knowledge"></div>
-                    <div class="gift-box" data-gift="Creativity"></div>
-                    <div class="gift-box" data-gift="Success"></div>
-                    <div class="gift-box" data-gift="Growth"></div>
+                    <div class="gift-box" style="background: linear-gradient(45deg, #b32d2e, #ff6b6b);">🎁</div>
+                    <div class="gift-box" style="background: linear-gradient(45deg, #2d5c2a, #4cd964);">🎁</div>
+                    <div class="gift-box" style="background: linear-gradient(45deg, #d4af37, #ffd700);">🎁</div>
+                    <div class="gift-box" style="background: linear-gradient(45deg, #1a1a2e, #1e90ff);">🎁</div>
                 </div>
                 
-                <div style="margin-top: 30px; text-align: center;">
-                    <h3 style="color: white; margin-bottom: 15px;">Click the gifts to reveal your Christmas blessings!</h3>
-                    <p id="giftMessage" style="color: var(--christmas-gold); font-size: 1.3rem; min-height: 40px;"></p>
-                </div>
+                <div class="gift-message" id="giftMessage"></div>
             </div>
         </main>
         
@@ -686,42 +590,27 @@
                 <a href="#" class="social-icon" aria-label="LinkedIn">💼</a>
                 <a href="#" class="social-icon" aria-label="Instagram">📷</a>
                 <a href="#" class="social-icon" aria-label="YouTube">📺</a>
-                <a href="#" class="social-icon" aria-label="GitHub">💻</a>
             </div>
             
             <div class="copyright">
-                &copy; 2025 Cre8learn Institute. All rights reserved. | 
-                <a href="#" style="color: var(--christmas-gold); text-decoration: none;">Privacy Policy</a> | 
-                <a href="#" style="color: var(--christmas-gold); text-decoration: none;">Accessibility</a> | 
-                <a href="#" style="color: var(--christmas-gold); text-decoration: none;">Terms of Service</a>
+                &copy; 2025 Cre8learn Institute. All rights reserved.
             </div>
         </footer>
     </div>
 
-    <!-- Audio Element for Christmas Music -->
-    <audio id="christmasMusic" loop>
-        <source src="https://assets.mixkit.co/music/preview/mixkit-christmas-loop-350.mp3" type="audio/mpeg">
-    </audio>
-    
-    <!-- Audio Element for Bell Sound -->
-    <audio id="bellSound">
-        <source src="https://assets.mixkit.co/sfx/preview/mixkit-bell-tick-tock-1030.mp3" type="audio/mpeg">
-    </audio>
-
     <!-- JavaScript -->
     <script>
-        // Enhanced Christmas Lights
-        function createChristmasLights() {
-            const container = document.getElementById('christmasLights');
-            const lightCount = 100;
-            const colors = ['#ff0000', '#00ff00', '#ffff00', '#ff00ff', '#00ffff', '#ffffff'];
+        // Background lights
+        function createBackgroundLights() {
+            const container = document.getElementById('bgLights');
+            const colors = ['#ff0000', '#00ff00', '#ffff00', '#ff00ff', '#00ffff'];
             
-            for (let i = 0; i < lightCount; i++) {
+            for (let i = 0; i < 80; i++) {
                 const light = document.createElement('div');
-                light.classList.add('light');
+                light.className = 'light';
                 
                 // Random properties
-                const size = Math.random() * 15 + 10;
+                const size = Math.random() * 10 + 5;
                 const left = Math.random() * 100;
                 const top = Math.random() * 100;
                 const color = colors[Math.floor(Math.random() * colors.length)];
@@ -740,67 +629,62 @@
             }
         }
         
-        // Enhanced Snowfall
+        // Snowflakes
         function createSnowflakes() {
-            const container = document.getElementById('snowflakes-container');
-            const snowflakeCount = 80;
+            const container = document.getElementById('snowflakes');
             
-            for (let i = 0; i < snowflakeCount; i++) {
-                const snowflake = document.createElement('div');
-                snowflake.classList.add('snowflake');
+            for (let i = 0; i < 70; i++) {
+                const flake = document.createElement('div');
+                flake.className = 'snowflake';
                 
-                // Random properties
-                const size = Math.random() * 15 + 5;
-                const startPosition = Math.random() * 100;
+                const size = Math.random() * 12 + 3;
+                const left = Math.random() * 100;
                 const duration = Math.random() * 15 + 10;
                 const delay = Math.random() * 10;
                 const opacity = Math.random() * 0.8 + 0.2;
                 
-                snowflake.style.width = `${size}px`;
-                snowflake.style.height = `${size}px`;
-                snowflake.style.left = `${startPosition}vw`;
-                snowflake.style.opacity = opacity;
-                snowflake.style.animationDuration = `${duration}s`;
-                snowflake.style.animationDelay = `${delay}s`;
-                snowflake.style.filter = `blur(${Math.random() * 2}px)`;
+                flake.style.width = `${size}px`;
+                flake.style.height = `${size}px`;
+                flake.style.left = `${left}vw`;
+                flake.style.opacity = opacity;
+                flake.style.animationDuration = `${duration}s`;
+                flake.style.animationDelay = `${delay}s`;
                 
-                container.appendChild(snowflake);
+                container.appendChild(flake);
             }
         }
         
-        // Add ornaments to mega tree
-        function decorateMegaTree() {
-            const tree = document.getElementById('megaChristmasTree');
-            const ornamentCount = 30;
-            const colors = ['#b32d2e', '#d4af37', '#1e90ff', '#ffffff', '#ff69b4', '#00ff00'];
+        // Decorate tree with ornaments
+        function decorateTree() {
+            const tree = document.getElementById('christmasTree');
+            const colors = ['#b32d2e', '#d4af37', '#ffffff', '#1e90ff', '#ff69b4'];
             
-            for (let i = 0; i < ornamentCount; i++) {
+            // Create 20 ornaments
+            for (let i = 0; i < 20; i++) {
                 const ornament = document.createElement('div');
-                ornament.classList.add('light'); // Reuse light class for ornaments
+                ornament.className = 'ornament';
                 
-                // Position ornaments on tree layers
-                const left = Math.random() * 80 + 10;
-                const top = Math.random() * 70 + 10;
+                // Position on tree
+                const left = Math.random() * 75 + 12;
+                const top = Math.random() * 65 + 15;
                 const color = colors[Math.floor(Math.random() * colors.length)];
-                const size = Math.random() * 20 + 10;
+                const size = Math.random() * 20 + 15;
+                const duration = Math.random() * 3 + 2;
                 
-                ornament.style.position = 'absolute';
                 ornament.style.left = `${left}%`;
                 ornament.style.top = `${top}%`;
                 ornament.style.backgroundColor = color;
                 ornament.style.width = `${size}px`;
                 ornament.style.height = `${size}px`;
-                ornament.style.borderRadius = '50%';
-                ornament.style.zIndex = '5';
-                ornament.style.cursor = 'pointer';
-                ornament.style.animation = `lightTwinkle ${Math.random() * 2 + 1}s infinite alternate`;
+                ornament.style.animationDuration = `${duration}s`;
                 
+                // Click effect
                 ornament.addEventListener('click', function() {
+                    playBellSound();
                     this.style.transform = 'scale(1.5)';
                     setTimeout(() => {
                         this.style.transform = 'scale(1)';
                     }, 300);
-                    document.getElementById('bellSound').play();
                 });
                 
                 tree.appendChild(ornament);
@@ -808,82 +692,187 @@
         }
         
         // Gift box interactions
-        function setupGiftInteractions() {
+        function setupGifts() {
             const gifts = document.querySelectorAll('.gift-box');
             const giftMessage = document.getElementById('giftMessage');
             const messages = [
-                "🎁 Your gift of Knowledge: May your mind always be curious!",
-                "🎁 Your gift of Creativity: May your ideas flow endlessly!",
-                "🎁 Your gift of Success: May all your efforts bear fruit!",
-                "🎁 Your gift of Growth: May you reach new heights every day!"
+                "🎁 Gift of Knowledge: May your learning journey be ever rewarding!",
+                "🎁 Gift of Creativity: May your imagination know no bounds!",
+                "🎁 Gift of Success: May your efforts lead to great achievements!",
+                "🎁 Gift of Growth: May you reach new heights every day!"
             ];
             
             gifts.forEach((gift, index) => {
                 gift.addEventListener('click', function() {
-                    // Visual effect
-                    this.style.transform = 'scale(1.5) rotateY(180deg)';
+                    playBellSound();
+                    
+                    // Animate gift
+                    this.style.transform = 'scale(1.5) rotate(180deg)';
                     this.style.transition = 'transform 0.5s';
                     
                     // Show message
                     giftMessage.textContent = messages[index];
-                    giftMessage.style.animation = 'none';
-                    setTimeout(() => {
-                        giftMessage.style.animation = 'pulse 1s';
-                    }, 10);
                     
-                    // Play sound
-                    document.getElementById('bellSound').play();
-                    
-                    // Reset after delay
+                    // Reset gift
                     setTimeout(() => {
-                        this.style.transform = 'scale(1) rotateY(0deg)';
-                    }, 1000);
+                        this.style.transform = 'scale(1) rotate(0deg)';
+                    }, 800);
                 });
             });
         }
         
-        // Music controls
-        function setupMusicControls() {
-            const musicToggle = document.getElementById('musicToggle');
-            const music = document.getElementById('christmasMusic');
-            const bellBtn = document.getElementById('bellBtn');
-            const snowBtn = document.getElementById('snowBtn');
-            const bellSound = document.getElementById('bellSound');
-            const bell = document.getElementById('christmasBell');
-            
-            let musicPlaying = false;
-            let snowActive = true;
-            
-            // Christmas music - using a public domain Christmas tune
-            music.volume = 0.3;
-            
-            musicToggle.addEventListener('click', function() {
-                if (musicPlaying) {
-                    music.pause();
-                    this.textContent = '🔇';
-                    this.style.background = '#666';
-                } else {
-                    music.play().catch(e => {
-                        console.log("Autoplay prevented. User interaction required.");
-                        this.textContent = '▶️';
-                    });
-                    this.textContent = '🎵';
-                    this.style.background = 'var(--christmas-green)';
+        // Music system - FIXED
+        let musicPlaying = false;
+        let audioContext;
+        let musicSource;
+        
+        function initMusic() {
+            try {
+                // Create simple Christmas melody using Web Audio API
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                
+                // Christmas melody notes (Jingle Bells simplified)
+                const jingleBellsNotes = [
+                    {freq: 523.25, duration: 0.3}, // C5
+                    {freq: 523.25, duration: 0.3}, // C5
+                    {freq: 523.25, duration: 0.6}, // C5
+                    {freq: 523.25, duration: 0.3}, // C5
+                    {freq: 523.25, duration: 0.3}, // C5
+                    {freq: 523.25, duration: 0.6}, // C5
+                    {freq: 523.25, duration: 0.3}, // C5
+                    {freq: 587.33, duration: 0.3}, // D5
+                    {freq: 493.88, duration: 0.3}, // B4
+                    {freq: 440.00, duration: 0.3}, // A4
+                    {freq: 392.00, duration: 0.9}  // G4
+                ];
+                
+                function playNote(frequency, duration, time) {
+                    const oscillator = audioContext.createOscillator();
+                    const gainNode = audioContext.createGain();
+                    
+                    oscillator.connect(gainNode);
+                    gainNode.connect(audioContext.destination);
+                    
+                    oscillator.frequency.value = frequency;
+                    oscillator.type = 'sine';
+                    
+                    // Fade in/out to avoid clicking
+                    gainNode.gain.setValueAtTime(0, time);
+                    gainNode.gain.linearRampToValueAtTime(0.1, time + 0.01);
+                    gainNode.gain.linearRampToValueAtTime(0.1, time + duration - 0.01);
+                    gainNode.gain.linearRampToValueAtTime(0, time + duration);
+                    
+                    oscillator.start(time);
+                    oscillator.stop(time + duration);
                 }
-                musicPlaying = !musicPlaying;
-            });
+                
+                function playChristmasMelody() {
+                    if (!musicPlaying) return;
+                    
+                    const startTime = audioContext.currentTime;
+                    
+                    // Play first sequence
+                    jingleBellsNotes.forEach((note, index) => {
+                        playNote(note.freq, note.duration, startTime + index * 0.35);
+                    });
+                    
+                    // Repeat melody
+                    setTimeout(playChristmasMelody, 4000);
+                }
+                
+                return playChristmasMelody;
+                
+            } catch (e) {
+                console.log("Audio API not supported:", e);
+                return null;
+            }
+        }
+        
+        function toggleMusic() {
+            const musicBtn = document.getElementById('musicBtn');
             
-            bellBtn.addEventListener('click', function() {
-                bellSound.currentTime = 0;
-                bellSound.play();
+            if (!audioContext) {
+                const playMelody = initMusic();
+                if (!playMelody) {
+                    musicBtn.textContent = '🔇';
+                    musicBtn.style.background = '#666';
+                    alert("Audio not supported in this browser");
+                    return;
+                }
+            }
+            
+            if (musicPlaying) {
+                // Stop music
+                if (audioContext) {
+                    audioContext.suspend();
+                }
+                musicBtn.textContent = '🔇';
+                musicBtn.style.background = '#666';
+                musicPlaying = false;
+            } else {
+                // Start music
+                if (audioContext.state === 'suspended') {
+                    audioContext.resume();
+                }
+                
+                // Start playing melody
+                setTimeout(() => {
+                    const playMelody = initMusic();
+                    if (playMelody) playMelody();
+                }, 100);
+                
+                musicBtn.textContent = '🎵';
+                musicBtn.style.background = 'var(--christmas-green)';
+                musicPlaying = true;
+            }
+        }
+        
+        // Bell sound
+        function playBellSound() {
+            try {
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.frequency.value = 800;
+                oscillator.type = 'sine';
+                
+                gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 1);
+                
+                oscillator.start(audioContext.currentTime);
+                oscillator.stop(audioContext.currentTime + 1);
                 
                 // Visual feedback
-                bell.style.transform = 'scale(1.5)';
+                const bell = document.getElementById('christmasBell');
+                bell.style.animation = 'none';
                 setTimeout(() => {
-                    bell.style.transform = 'scale(1)';
-                }, 300);
-            });
+                    bell.style.animation = 'bellSwing 0.5s ease-in-out';
+                }, 10);
+                
+            } catch (e) {
+                console.log("Bell sound error:", e);
+            }
+        }
+        
+        // Controls
+        function setupControls() {
+            const musicBtn = document.getElementById('musicBtn');
+            const bellBtn = document.getElementById('bellBtn');
+            const snowBtn = document.getElementById('snowBtn');
+            const treeStar = document.getElementById('treeStar');
             
+            // Music control
+            musicBtn.addEventListener('click', toggleMusic);
+            
+            // Bell control
+            bellBtn.addEventListener('click', playBellSound);
+            
+            // Snow control
+            let snowActive = true;
             snowBtn.addEventListener('click', function() {
                 const snowflakes = document.querySelectorAll('.snowflake');
                 snowActive = !snowActive;
@@ -903,66 +892,38 @@
                 }
             });
             
-            // Bell animation sync with sound
-            bellSound.addEventListener('play', function() {
-                bell.style.animation = 'bellSwing 0.5s ease-in-out';
-            });
-        }
-        
-        // Interactive tree star
-        function setupInteractiveStar() {
-            const star = document.getElementById('treeStar');
-            
-            star.addEventListener('click', function() {
-                this.style.fontSize = '100px';
+            // Star interaction
+            treeStar.addEventListener('click', function() {
+                playBellSound();
+                this.style.fontSize = '120px';
                 this.style.filter = 'drop-shadow(0 0 50px gold) brightness(2)';
                 
-                // Play bell sound
-                document.getElementById('bellSound').play();
-                
                 setTimeout(() => {
-                    this.style.fontSize = '80px';
-                    this.style.filter = 'drop-shadow(0 0 30px gold)';
+                    this.style.fontSize = '90px';
+                    this.style.filter = 'drop-shadow(0 0 15px gold) brightness(1)';
                 }, 500);
             });
+            
+            // Click bell to ring
+            document.getElementById('christmasBell').addEventListener('click', playBellSound);
         }
         
-        // Initialize everything when page loads
+        // Initialize everything
         document.addEventListener('DOMContentLoaded', function() {
-            createChristmasLights();
+            createBackgroundLights();
             createSnowflakes();
-            decorateMegaTree();
-            setupGiftInteractions();
-            setupMusicControls();
-            setupInteractiveStar();
+            decorateTree();
+            setupGifts();
+            setupControls();
             
-            // Update year dynamically
-            const yearElement = document.querySelector('.year');
-            const now = new Date();
-            yearElement.textContent = `December 25, ${now.getFullYear()}`;
+            // Update year
+            document.querySelector('.year').textContent = `December 25, ${new Date().getFullYear()}`;
             
-            // Festive console greeting
-            console.log('%c🎅 MERRY CHRISTMAS 2025 from Cre8learn Institute! 🎄', 
+            // Festive console message
+            console.log('%c🎄 MERRY CHRISTMAS from Cre8learn Institute! 🎅', 
                 'background: linear-gradient(90deg, red, green, gold); color: white; font-size: 18px; padding: 10px; border-radius: 5px;');
-            console.log('%cEmail: cre8learn_instute@outlook.com\nOperations Resume: January 5, 2026', 
+            console.log('%cEmail: cre8learn_instute@outlook.com | Resuming: Jan 5, 2026', 
                 'color: #d4af37; font-size: 14px;');
-            
-            // Auto-start music on interaction (after user clicks)
-            document.body.addEventListener('click', function startMusicOnce() {
-                const music = document.getElementById('christmasMusic');
-                music.play().then(() => {
-                    document.getElementById('musicToggle').textContent = '🎵';
-                    musicPlaying = true;
-                }).catch(e => {
-                    console.log("Music will start after user interaction");
-                });
-                document.body.removeEventListener('click', startMusicOnce);
-            });
-        });
-        
-        // Handle window resize
-        window.addEventListener('resize', function() {
-            // You can add responsive adjustments here if needed
         });
     </script>
 </body>
