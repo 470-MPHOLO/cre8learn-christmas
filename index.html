@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Merry Christmas from Cre8learn Institute</title>
+    <title>Jingle Bells Christmas from Cre8learn Institute</title>
     
     <style>
         * {
@@ -14,15 +14,15 @@
         
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #0c1e12 0%, #1a0f1a 100%);
+            background: linear-gradient(135deg, #0a2919 0%, #1a0b1a 100%);
             color: white;
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
         }
         
-        /* Rhythm Background */
-        .rhythm-bars {
+        /* Jingle Bells Rhythm Visualizer */
+        .jingle-bars {
             position: fixed;
             bottom: 0;
             left: 0;
@@ -31,52 +31,42 @@
             display: flex;
             align-items: flex-end;
             justify-content: center;
-            gap: 8px;
+            gap: 4px;
             padding: 20px;
             z-index: 1;
+            background: rgba(0, 0, 0, 0.3);
         }
         
-        .rhythm-bar {
-            width: 20px;
+        .jingle-bar {
+            width: 16px;
             background: linear-gradient(to top, #b32d2e, #ff6b6b);
-            border-radius: 10px 10px 0 0;
-            animation: rhythmMove 1.5s infinite alternate;
-            box-shadow: 0 0 15px rgba(179, 45, 46, 0.5);
+            border-radius: 8px 8px 0 0;
+            box-shadow: 0 0 10px rgba(179, 45, 46, 0.5);
+            transition: height 0.1s ease;
         }
         
-        @keyframes rhythmMove {
-            0% { height: 20px; opacity: 0.5; }
-            100% { height: 120px; opacity: 1; }
-        }
-        
-        /* Christmas Lights Rhythm */
-        .light-rhythm {
+        /* Christmas Lights that pulse to music */
+        .music-lights {
             position: fixed;
-            top: 0;
+            top: 20px;
             left: 0;
             width: 100%;
-            height: 100px;
             display: flex;
             justify-content: center;
-            gap: 15px;
-            padding: 20px;
+            gap: 20px;
+            padding: 15px;
             z-index: 1;
         }
         
-        .light-bulb {
-            width: 25px;
-            height: 25px;
+        .music-light {
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
-            animation: lightPulse 1s infinite alternate;
-            box-shadow: 0 0 20px currentColor;
+            box-shadow: 0 0 15px currentColor;
+            opacity: 0.7;
         }
         
-        @keyframes lightPulse {
-            0% { transform: scale(1); opacity: 0.5; }
-            100% { transform: scale(1.3); opacity: 1; }
-        }
-        
-        /* Main Content */
+        /* Main Container */
         .container {
             position: relative;
             z-index: 10;
@@ -86,232 +76,174 @@
             text-align: center;
         }
         
-        /* Header with Beat */
-        .header-beat {
+        /* Jingle Bells Title */
+        .jingle-header {
             margin-bottom: 60px;
             padding: 40px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 30px;
             backdrop-filter: blur(10px);
             border: 3px solid rgba(212, 175, 55, 0.3);
-            animation: headerPulse 2s infinite alternate;
+            animation: jinglePulse 1s infinite alternate;
         }
         
-        @keyframes headerPulse {
-            0% { transform: scale(1); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
-            100% { transform: scale(1.02); box-shadow: 0 20px 50px rgba(212, 175, 55, 0.3); }
+        @keyframes jinglePulse {
+            0% { box-shadow: 0 10px 30px rgba(179, 45, 46, 0.3); }
+            100% { box-shadow: 0 20px 50px rgba(212, 175, 55, 0.5); }
         }
         
         .institute-name {
-            font-size: 3.5rem;
+            font-size: 3rem;
             color: #4cd964;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             text-shadow: 0 0 20px rgba(76, 217, 100, 0.5);
-            animation: colorShift 3s infinite alternate;
-        }
-        
-        @keyframes colorShift {
-            0% { color: #4cd964; }
-            50% { color: #d4af37; }
-            100% { color: #ff6b6b; }
         }
         
         .christmas-title {
-            font-size: 6rem;
+            font-size: 5rem;
             font-weight: bold;
             background: linear-gradient(45deg, #ff6b6b, #d4af37, #4cd964);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            margin: 30px 0;
-            animation: titleBeat 2s infinite alternate;
+            margin: 25px 0;
             text-transform: uppercase;
-            letter-spacing: 5px;
+            letter-spacing: 3px;
+            position: relative;
         }
         
-        @keyframes titleBeat {
-            0% { transform: scale(1); letter-spacing: 5px; }
-            100% { transform: scale(1.05); letter-spacing: 8px; }
+        .christmas-title::after {
+            content: '🎶';
+            position: absolute;
+            right: -50px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2.5rem;
+            animation: bellSwing 2s infinite ease-in-out;
         }
         
-        .year {
-            display: inline-block;
-            padding: 15px 30px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50px;
-            font-size: 1.5rem;
-            margin-top: 20px;
-            animation: yearBounce 1.5s infinite alternate;
+        @keyframes bellSwing {
+            0%, 100% { transform: translateY(-50%) rotate(-20deg); }
+            50% { transform: translateY(-50%) rotate(20deg); }
         }
         
-        @keyframes yearBounce {
+        .jingle-subtitle {
+            font-size: 2rem;
+            color: #d4af37;
+            margin: 20px 0;
+            animation: colorShift 3s infinite alternate;
+        }
+        
+        @keyframes colorShift {
+            0% { color: #d4af37; }
+            50% { color: #ff6b6b; }
+            100% { color: #4cd964; }
+        }
+        
+        /* Dancing Sleigh */
+        .sleigh-container {
+            margin: 40px 0;
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .sleigh {
+            position: absolute;
+            font-size: 120px;
+            animation: sleighRide 15s infinite linear;
+            filter: drop-shadow(0 0 10px gold);
+        }
+        
+        @keyframes sleighRide {
+            0% { left: -200px; transform: scaleX(1); }
+            49% { left: 100%; transform: scaleX(1); }
+            50% { left: 100%; transform: scaleX(-1); }
+            99% { left: -200px; transform: scaleX(-1); }
+            100% { left: -200px; transform: scaleX(1); }
+        }
+        
+        .reindeer {
+            position: absolute;
+            font-size: 60px;
+            animation: reindeerBounce 0.5s infinite alternate;
+        }
+        
+        .reindeer:nth-child(2) { top: 20px; left: 150px; animation-delay: 0.1s; }
+        .reindeer:nth-child(3) { top: 40px; left: 250px; animation-delay: 0.2s; }
+        .reindeer:nth-child(4) { top: 20px; left: 350px; animation-delay: 0.3s; }
+        
+        @keyframes reindeerBounce {
             0% { transform: translateY(0); }
             100% { transform: translateY(-10px); }
         }
         
-        /* Dancing Christmas Tree */
-        .dancing-tree-container {
-            margin: 60px 0;
-            position: relative;
-            height: 400px;
-        }
-        
-        .dancing-tree {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 200px;
-            height: 300px;
-            animation: treeDance 1.5s infinite alternate;
-            transform-origin: bottom center;
-        }
-        
-        @keyframes treeDance {
-            0% { transform: translateX(-50%) rotate(-5deg); }
-            100% { transform: translateX(-50%) rotate(5deg); }
-        }
-        
-        .tree-layer {
-            position: absolute;
-            width: 0;
-            height: 0;
-            border-left: 100px solid transparent;
-            border-right: 100px solid transparent;
-            border-bottom: 150px solid #2d9a2d;
-            bottom: 0;
-            left: 0;
-            filter: drop-shadow(0 0 10px #4cd964);
-            animation: layerGlow 1s infinite alternate;
-        }
-        
-        .tree-layer:nth-child(2) {
-            top: 50px;
-            border-left-width: 80px;
-            border-right-width: 80px;
-            border-bottom-width: 120px;
-            left: 20px;
-            border-bottom-color: #1e7a1e;
-            animation-delay: 0.2s;
-        }
-        
-        .tree-layer:nth-child(3) {
-            top: 100px;
-            border-left-width: 60px;
-            border-right-width: 60px;
-            border-bottom-width: 90px;
-            left: 40px;
-            border-bottom-color: #0f5a0f;
-            animation-delay: 0.4s;
-        }
-        
-        @keyframes layerGlow {
-            0% { filter: drop-shadow(0 0 10px #4cd964) brightness(1); }
-            100% { filter: drop-shadow(0 0 25px #4cd964) brightness(1.3); }
-        }
-        
-        .tree-star {
-            position: absolute;
-            top: -40px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 60px;
-            animation: starTwirl 3s infinite linear;
-            filter: drop-shadow(0 0 20px gold);
-        }
-        
-        @keyframes starTwirl {
-            from { transform: translateX(-50%) rotate(0deg); }
-            to { transform: translateX(-50%) rotate(360deg); }
-        }
-        
-        /* Message Card with Rhythm */
-        .message-card {
-            background: rgba(255, 255, 255, 0.15);
-            padding: 50px;
-            border-radius: 25px;
-            margin: 60px auto;
+        /* Song Lyrics Display */
+        .lyrics-container {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 30px;
+            border-radius: 20px;
+            margin: 40px auto;
             max-width: 800px;
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(212, 175, 55, 0.3);
-            animation: cardBeat 1.2s infinite alternate;
-            position: relative;
-            overflow: hidden;
+            backdrop-filter: blur(5px);
+            border-left: 5px solid #b32d2e;
+            border-right: 5px solid #b32d2e;
         }
         
-        @keyframes cardBeat {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.02); }
+        .lyrics-line {
+            font-size: 1.8rem;
+            margin: 15px 0;
+            padding: 10px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            opacity: 0.7;
         }
         
-        .message-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, #ff6b6b, #d4af37, #4cd964, transparent);
-            animation: shimmer 3s infinite linear;
+        .lyrics-line.active {
+            background: rgba(179, 45, 46, 0.3);
+            color: #ffd700;
+            opacity: 1;
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(179, 45, 46, 0.3);
         }
         
-        @keyframes shimmer {
-            to { left: 100%; }
-        }
-        
-        .message-card h2 {
-            font-size: 2.5rem;
-            margin-bottom: 30px;
-            color: #d4af37;
-            animation: textPulse 2s infinite alternate;
-        }
-        
-        @keyframes textPulse {
-            0% { transform: scale(1); opacity: 0.9; }
-            100% { transform: scale(1.05); opacity: 1; }
-        }
-        
-        .message-card p {
-            font-size: 1.3rem;
-            line-height: 1.8;
-            margin-bottom: 25px;
-            animation: fadeInOut 4s infinite alternate;
-        }
-        
-        @keyframes fadeInOut {
-            0%, 100% { opacity: 0.9; }
-            50% { opacity: 1; }
-        }
-        
-        /* Dancing Elements */
-        .dancing-elements {
+        /* Interactive Bells */
+        .bells-container {
             display: flex;
             justify-content: center;
-            gap: 40px;
+            gap: 30px;
             margin: 50px 0;
             flex-wrap: wrap;
         }
         
-        .dancer {
-            font-size: 80px;
-            animation: dance 1s infinite alternate;
+        .bell {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #d4af37, #ffd700);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
             cursor: pointer;
-            transition: transform 0.3s;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+            animation: bellGlow 2s infinite alternate;
+            transition: transform 0.2s;
         }
         
-        @keyframes dance {
-            0% { transform: translateY(0) rotate(0deg); }
-            100% { transform: translateY(-20px) rotate(10deg); }
+        .bell:hover {
+            transform: scale(1.2);
         }
         
-        .dancer:nth-child(2) { animation-delay: 0.2s; }
-        .dancer:nth-child(3) { animation-delay: 0.4s; }
-        .dancer:nth-child(4) { animation-delay: 0.6s; }
-        .dancer:nth-child(5) { animation-delay: 0.8s; }
+        @keyframes bellGlow {
+            0% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.5); }
+            100% { box-shadow: 0 0 40px rgba(212, 175, 55, 0.8); }
+        }
         
-        /* Beat Controls */
-        .beat-controls {
+        /* Music Controls */
+        .music-controls {
             position: fixed;
-            bottom: 200px;
+            bottom: 180px;
             right: 30px;
             display: flex;
             flex-direction: column;
@@ -319,205 +251,208 @@
             z-index: 100;
         }
         
-        .beat-btn {
+        .music-btn {
             width: 70px;
             height: 70px;
             border-radius: 50%;
             border: none;
-            background: #ff6b6b;
+            background: #b32d2e;
             color: white;
-            font-size: 24px;
+            font-size: 28px;
             cursor: pointer;
-            box-shadow: 0 0 20px rgba(255, 107, 107, 0.7);
-            animation: buttonPulse 2s infinite alternate;
+            box-shadow: 0 0 20px rgba(179, 45, 46, 0.7);
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: all 0.3s;
         }
         
-        @keyframes buttonPulse {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.1); }
-        }
-        
-        .beat-btn:nth-child(2) {
+        .music-btn:hover {
+            transform: scale(1.1);
             background: #d4af37;
-            animation-delay: 0.5s;
         }
         
-        .beat-btn:nth-child(3) {
+        .music-btn.active {
             background: #4cd964;
-            animation-delay: 1s;
+            animation: pulse 1s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
         }
         
         /* Footer */
         footer {
             text-align: center;
             padding: 40px;
-            margin-top: 80px;
+            margin-top: 60px;
             background: rgba(0, 0, 0, 0.7);
             border-radius: 30px 30px 0 0;
             position: relative;
-            animation: footerFloat 3s infinite alternate;
         }
         
-        @keyframes footerFloat {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-10px); }
+        .contact-box {
+            background: linear-gradient(45deg, rgba(179, 45, 46, 0.2), rgba(212, 175, 55, 0.2));
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px auto;
+            max-width: 600px;
+            border: 2px solid rgba(212, 175, 55, 0.3);
         }
         
-        .email-highlight {
+        .email-link {
             display: inline-block;
             padding: 15px 30px;
-            background: linear-gradient(45deg, #ff6b6b, #d4af37);
-            border-radius: 25px;
-            font-size: 1.4rem;
-            margin: 20px 0;
-            animation: emailGlow 2s infinite alternate;
-            text-decoration: none;
+            background: linear-gradient(45deg, #b32d2e, #d4af37);
             color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 1.3rem;
+            margin: 15px 0;
+            transition: transform 0.3s;
         }
         
-        @keyframes emailGlow {
-            0% { box-shadow: 0 0 20px rgba(255, 107, 107, 0.5); }
-            100% { box-shadow: 0 0 40px rgba(212, 175, 55, 0.8); }
+        .email-link:hover {
+            transform: scale(1.05);
         }
         
         .resume-date {
             font-size: 1.8rem;
             color: #4cd964;
-            margin: 30px 0;
+            margin: 25px 0;
             padding: 20px;
             background: rgba(76, 217, 100, 0.1);
-            border-radius: 20px;
+            border-radius: 15px;
             display: inline-block;
-            animation: datePulse 1.5s infinite alternate;
         }
         
-        @keyframes datePulse {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.05); }
+        /* Snowflakes */
+        .snowflake {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.8;
+            animation: snowFall linear infinite;
+        }
+        
+        @keyframes snowFall {
+            to { transform: translateY(100vh); }
         }
         
         /* Responsive */
         @media (max-width: 768px) {
             .christmas-title {
-                font-size: 4rem;
+                font-size: 3rem;
             }
             
-            .institute-name {
-                font-size: 2.5rem;
+            .jingle-subtitle {
+                font-size: 1.5rem;
             }
             
-            .dancing-tree-container {
-                height: 300px;
+            .lyrics-line {
+                font-size: 1.3rem;
             }
             
-            .dancing-tree {
-                width: 150px;
-                height: 225px;
-            }
-            
-            .beat-controls {
+            .music-controls {
                 bottom: 150px;
                 right: 15px;
             }
             
-            .beat-btn {
+            .music-btn {
                 width: 60px;
                 height: 60px;
+                font-size: 24px;
             }
         }
         
-        /* Visualizer */
-        .visualizer {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-        }
-        
-        .visualizer-circle {
+        /* Visual Effects */
+        .note {
             position: absolute;
-            border-radius: 50%;
-            animation: circleExpand 2s infinite;
-            opacity: 0.3;
+            font-size: 30px;
+            animation: noteFloat 2s linear forwards;
+            opacity: 0;
+            z-index: 100;
         }
         
-        @keyframes circleExpand {
-            0% { transform: scale(0); opacity: 0.5; }
-            100% { transform: scale(2); opacity: 0; }
+        @keyframes noteFloat {
+            0% { transform: translateY(0) scale(0.5); opacity: 0; }
+            20% { opacity: 1; }
+            100% { transform: translateY(-100px) scale(1); opacity: 0; }
         }
     </style>
 </head>
 <body>
-    <!-- Rhythm Bars -->
-    <div class="rhythm-bars" id="rhythmBars">
-        <!-- Generated by JavaScript -->
-    </div>
+    <!-- Jingle Bells Visualizer -->
+    <div class="jingle-bars" id="jingleBars"></div>
     
-    <!-- Light Rhythm -->
-    <div class="light-rhythm" id="lightRhythm">
-        <!-- Generated by JavaScript -->
-    </div>
+    <!-- Music Lights -->
+    <div class="music-lights" id="musicLights"></div>
     
-    <!-- Visualizer -->
-    <div class="visualizer" id="visualizer"></div>
+    <!-- Snowflakes -->
+    <div id="snowflakes"></div>
     
-    <!-- Beat Controls -->
-    <div class="beat-controls">
-        <button class="beat-btn" id="musicToggle">🎵</button>
-        <button class="beat-btn" id="beatToggle">🎄</button>
-        <button class="beat-btn" id="visualizerToggle">🌟</button>
+    <!-- Music Controls -->
+    <div class="music-controls">
+        <button class="music-btn" id="playBtn">▶️</button>
+        <button class="music-btn" id="volumeBtn">🔊</button>
+        <button class="music-btn" id="lyricsBtn">📜</button>
     </div>
     
     <div class="container">
-        <header class="header-beat">
+        <header class="jingle-header">
             <h1 class="institute-name">Cre8learn Institute</h1>
-            <div class="christmas-title">MERRY CHRISTMAS</div>
-            <h2 style="font-size: 1.8rem; color: #d4af37; margin: 20px 0;">
-                Celebrating with Rhythm & Joy
-            </h2>
-            <div class="year">December 25, 2025</div>
+            <div class="christmas-title">JINGLE BELLS</div>
+            <div class="jingle-subtitle">Merry Christmas 2025!</div>
+            <div style="font-size: 1.5rem; color: #ff6b6b; margin-top: 20px;">
+                🎵 Feel the Christmas rhythm! 🎵
+            </div>
         </header>
         
-        <div class="dancing-tree-container">
-            <div class="dancing-tree">
-                <div class="tree-layer"></div>
-                <div class="tree-layer"></div>
-                <div class="tree-layer"></div>
-                <div class="tree-star">⭐</div>
-            </div>
+        <div class="sleigh-container">
+            <div class="sleigh">🛷</div>
+            <div class="reindeer">🦌</div>
+            <div class="reindeer">🦌</div>
+            <div class="reindeer">🦌</div>
         </div>
         
-        <div class="dancing-elements">
-            <div class="dancer" data-sound="1">🎅</div>
-            <div class="dancer" data-sound="2">🤶</div>
-            <div class="dancer" data-sound="3">🦌</div>
-            <div class="dancer" data-sound="4">🎁</div>
-            <div class="dancer" data-sound="5">🔔</div>
+        <div class="lyrics-container" id="lyricsContainer">
+            <div class="lyrics-line" id="line1">Jingle bells, jingle bells</div>
+            <div class="lyrics-line" id="line2">Jingle all the way</div>
+            <div class="lyrics-line" id="line3">Oh what fun it is to ride</div>
+            <div class="lyrics-line" id="line4">In a one horse open sleigh, hey!</div>
+            <div class="lyrics-line" id="line5">Jingle bells, jingle bells</div>
+            <div class="lyrics-line" id="line6">Jingle all the way</div>
+            <div class="lyrics-line" id="line7">Oh what fun it is to ride</div>
+            <div class="lyrics-line" id="line8">In a one horse open sleigh!</div>
         </div>
         
-        <div class="message-card">
-            <h2>🎶 Christmas Rhythm & Cheer 🎶</h2>
-            <p>Feel the beat of Christmas joy with Cre8learn Institute! As we celebrate this wonderful day, let the rhythm of the season fill your heart with happiness.</p>
-            
-            <p style="margin: 30px 0; font-size: 1.5rem; color: #ff6b6b;">
-                🎵 Every beat tells a story of joy 🎵<br>
-                🎄 Every rhythm brings Christmas cheer 🎄
+        <div class="bells-container">
+            <div class="bell" data-note="C">🔔</div>
+            <div class="bell" data-note="D">🔔</div>
+            <div class="bell" data-note="E">🔔</div>
+            <div class="bell" data-note="F">🔔</div>
+            <div class="bell" data-note="G">🔔</div>
+            <div class="bell" data-note="A">🔔</div>
+            <div class="bell" data-note="B">🔔</div>
+            <div class="bell" data-note="C2">🔔</div>
+        </div>
+        
+        <div style="margin: 40px 0; padding: 30px; background: rgba(255, 255, 255, 0.05); border-radius: 20px;">
+            <h2 style="color: #d4af37; margin-bottom: 20px; font-size: 2rem;">🎄 Christmas Message</h2>
+            <p style="font-size: 1.3rem; line-height: 1.8;">
+                From all of us at Cre8learn Institute, we wish you a Christmas filled with joy, 
+                laughter, and beautiful music! May the rhythm of Jingle Bells bring happiness 
+                to your home and heart.
             </p>
             
-            <p>From our family to yours, may your Christmas be filled with the perfect rhythm of love, laughter, and cherished moments. Tap the dancing elements to add to the Christmas beat!</p>
-            
-            <div style="margin-top: 40px; padding: 25px; background: rgba(212, 175, 55, 0.2); border-radius: 15px;">
-                <h3 style="color: #d4af37; margin-bottom: 15px;">📅 Institute Schedule</h3>
+            <div style="margin-top: 30px; padding: 20px; background: rgba(76, 217, 100, 0.1); border-radius: 15px;">
+                <h3 style="color: #4cd964; margin-bottom: 15px;">📅 Holiday Schedule</h3>
                 <p style="font-size: 1.2rem;">
-                    <strong>Christmas Day (Today):</strong> Celebrating with rhythm & joy<br>
+                    <strong>Christmas Day (Today):</strong> Celebrating with music & joy<br>
                     <strong>December 26 - January 4:</strong> Institute Break<br>
-                    <strong style="color: #4cd964;">January 5, 2026:</strong> Operations Resume with new energy!
+                    <strong style="color: #ff6b6b;">January 5, 2026:</strong> Operations Resume
                 </p>
             </div>
         </div>
@@ -526,339 +461,154 @@
             <div style="font-size: 2rem; color: #d4af37; margin-bottom: 20px;">
                 Cre8learn Institute
             </div>
-            <p style="font-size: 1.3rem; margin-bottom: 30px;">
-                Where learning meets celebration
-            </p>
             
-            <a href="mailto:cre8learn_instute@outlook.com" class="email-highlight">
-                ✉️ cre8learn_instute@outlook.com
-            </a>
+            <div class="contact-box">
+                <p style="font-size: 1.2rem; margin-bottom: 15px;">
+                    For urgent matters during the break:
+                </p>
+                <a href="mailto:cre8learn_instute@outlook.com" class="email-link">
+                    ✉️ cre8learn_instute@outlook.com
+                </a>
+            </div>
             
             <div class="resume-date">
-                🗓️ Back on January 5, 2026 with renewed rhythm!
+                🗓️ We'll be back on January 5, 2026!
             </div>
             
             <div style="margin-top: 40px; opacity: 0.8; font-size: 0.9rem;">
-                &copy; 2025 Cre8learn Institute. All rights reserved.<br>
-                Merry Christmas and a Happy New Year!
+                &copy; 2025 Cre8learn Institute. Merry Christmas! 🎅🎄
             </div>
         </footer>
     </div>
 
     <script>
-        // Create rhythm bars
-        function createRhythmBars() {
-            const container = document.getElementById('rhythmBars');
-            for (let i = 0; i < 40; i++) {
+        // REAL JINGLE BELLS MUSIC
+        let audioContext;
+        let isPlaying = false;
+        let currentLine = 0;
+        let volume = 0.3;
+        
+        // Jingle Bells melody notes (frequencies in Hz)
+        const jingleBellsMelody = [
+            {note: 'E', duration: 0.5}, // Jin-
+            {note: 'E', duration: 0.5}, // gle
+            {note: 'E', duration: 1},   // bells
+            {note: 'E', duration: 0.5}, // Jin-
+            {note: 'E', duration: 0.5}, // gle
+            {note: 'E', duration: 1},   // bells
+            {note: 'E', duration: 0.5}, // Jin-
+            {note: 'G', duration: 0.5}, // gle
+            {note: 'C', duration: 0.5}, // all
+            {note: 'D', duration: 0.5}, // the
+            {note: 'E', duration: 2},   // way
+            {note: 'F', duration: 0.5}, // Oh
+            {note: 'F', duration: 0.5}, // what
+            {note: 'F', duration: 0.5}, // fun
+            {note: 'F', duration: 0.5}, // it
+            {note: 'F', duration: 0.5}, // is
+            {note: 'E', duration: 0.5}, // to
+            {note: 'E', duration: 0.5}, // ride
+            {note: 'E', duration: 0.5}, // in
+            {note: 'E', duration: 0.5}, // a
+            {note: 'D', duration: 0.5}, // one
+            {note: 'D', duration: 0.5}, // horse
+            {note: 'E', duration: 0.5}, // o-
+            {note: 'D', duration: 1},   // pen
+            {note: 'G', duration: 2},   // sleigh
+            {note: 'E', duration: 0.5}, // Jin-
+            {note: 'E', duration: 0.5}, // gle
+            {note: 'E', duration: 1},   // bells
+            {note: 'E', duration: 0.5}, // Jin-
+            {note: 'E', duration: 0.5}, // gle
+            {note: 'E', duration: 1},   // bells
+            {note: 'E', duration: 0.5}, // Jin-
+            {note: 'G', duration: 0.5}, // gle
+            {note: 'C', duration: 0.5}, // all
+            {note: 'D', duration: 0.5}, // the
+            {note: 'E', duration: 2},   // way
+            {note: 'F', duration: 0.5}, // Oh
+            {note: 'F', duration: 0.5}, // what
+            {note: 'F', duration: 0.5}, // fun
+            {note: 'F', duration: 0.5}, // it
+            {note: 'F', duration: 0.5}, // is
+            {note: 'E', duration: 0.5}, // to
+            {note: 'E', duration: 0.5}, // ride
+            {note: 'E', duration: 0.5}, // in
+            {note: 'E', duration: 0.5}, // a
+            {note: 'G', duration: 0.5}, // one
+            {note: 'G', duration: 0.5}, // horse
+            {note: 'F', duration: 0.5}, // o-
+            {note: 'D', duration: 0.5}, // pen
+            {note: 'C', duration: 2}    // sleigh
+        ];
+        
+        // Note frequencies
+        const noteFrequencies = {
+            'C': 261.63,
+            'D': 293.66,
+            'E': 329.63,
+            'F': 349.23,
+            'G': 392.00,
+            'A': 440.00,
+            'B': 493.88,
+            'C2': 523.25
+        };
+        
+        // Create Jingle Bells visualizer bars
+        function createVisualizer() {
+            const container = document.getElementById('jingleBars');
+            for (let i = 0; i < 50; i++) {
                 const bar = document.createElement('div');
-                bar.className = 'rhythm-bar';
-                bar.style.animationDelay = `${i * 0.1}s`;
-                bar.style.height = `${20 + Math.random() * 100}px`;
+                bar.className = 'jingle-bar';
+                bar.style.height = '20px';
                 bar.style.background = `linear-gradient(to top, ${
-                    ['#b32d2e', '#d4af37', '#4cd964', '#1e90ff'][Math.floor(Math.random() * 4)]
+                    ['#b32d2e', '#d4af37', '#4cd964', '#1e90ff'][i % 4]
                 }, #ffffff)`;
                 container.appendChild(bar);
             }
         }
         
-        // Create Christmas lights rhythm
-        function createLightRhythm() {
-            const container = document.getElementById('lightRhythm');
-            const colors = ['#ff0000', '#00ff00', '#ffff00', '#ff00ff', '#00ffff', '#ffffff'];
+        // Create music lights
+        function createMusicLights() {
+            const container = document.getElementById('musicLights');
+            const colors = ['#ff0000', '#00ff00', '#ffff00', '#ff00ff', '#00ffff'];
             
-            for (let i = 0; i < 25; i++) {
+            for (let i = 0; i < 15; i++) {
                 const light = document.createElement('div');
-                light.className = 'light-bulb';
-                light.style.animationDelay = `${i * 0.15}s`;
-                light.style.animationDuration = `${0.5 + Math.random() * 1}s`;
-                light.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                light.style.boxShadow = `0 0 30px ${light.style.backgroundColor}`;
+                light.className = 'music-light';
+                light.style.backgroundColor = colors[i % colors.length];
                 container.appendChild(light);
             }
         }
         
-        // Create visualizer circles
-        function createVisualizer() {
-            const container = document.getElementById('visualizer');
-            setInterval(() => {
-                if (!visualizerActive) return;
+        // Create snowflakes
+        function createSnowflakes() {
+            const container = document.body;
+            for (let i = 0; i < 50; i++) {
+                const flake = document.createElement('div');
+                flake.className = 'snowflake';
                 
-                const circle = document.createElement('div');
-                circle.className = 'visualizer-circle';
+                const size = Math.random() * 8 + 2;
+                const left = Math.random() * 100;
+                const duration = Math.random() * 10 + 5;
+                const delay = Math.random() * 10;
                 
-                const size = 50 + Math.random() * 200;
-                const x = Math.random() * 100;
-                const y = Math.random() * 100;
-                const color = ['#ff6b6b', '#d4af37', '#4cd964'][Math.floor(Math.random() * 3)];
+                flake.style.width = `${size}px`;
+                flake.style.height = `${size}px`;
+                flake.style.left = `${left}vw`;
+                flake.style.opacity = Math.random() * 0.7 + 0.3;
+                flake.style.animationDuration = `${duration}s`;
+                flake.style.animationDelay = `${delay}s`;
                 
-                circle.style.width = `${size}px`;
-                circle.style.height = `${size}px`;
-                circle.style.left = `${x}vw`;
-                circle.style.top = `${y}vh`;
-                circle.style.backgroundColor = color;
-                circle.style.animationDuration = `${1 + Math.random() * 2}s`;
-                
-                container.appendChild(circle);
-                
-                // Remove circle after animation
-                setTimeout(() => {
-                    if (circle.parentNode) {
-                        circle.parentNode.removeChild(circle);
-                    }
-                }, 2000);
-                
-            }, 300);
+                container.appendChild(flake);
+            }
         }
         
-        // Rhythm Music System - "Merry Christmas" rhythm
-        let audioContext;
-        let isPlaying = false;
-        let visualizerActive = true;
-        
-        function playChristmasRhythm() {
-            if (!audioContext) {
-                audioContext = new (window.AudioContext || window.webkitAudioContext)();
-            }
-            
-            // Christmas rhythm pattern (drum-like beats)
-            const kickPattern = [1,0,0,1, 1,0,1,0]; // Kick drum
-            const snarePattern = [0,0,1,0, 0,0,1,0]; // Snare
-            const hatPattern =    [1,1,1,1, 1,1,1,1]; // Hi-hat
-            const bellPattern =   [1,0,0,0, 0,1,0,0]; // Christmas bell
-            
-            let beatCount = 0;
-            
-            function playBeat(time) {
-                const tempo = 120; // BPM
-                const beatDuration = 60 / tempo;
-                
-                // Play kick drum
-                if (kickPattern[beatCount % 8]) {
-                    playKick(time);
-                }
-                
-                // Play snare
-                if (snarePattern[beatCount % 8]) {
-                    playSnare(time);
-                }
-                
-                // Play hi-hat
-                if (hatPattern[beatCount % 8]) {
-                    playHiHat(time);
-                }
-                
-                // Play Christmas bell
-                if (bellPattern[beatCount % 8]) {
-                    playChristmasBell(time);
-                }
-                
-                // Visual feedback - make rhythm bars dance
-                const bars = document.querySelectorAll('.rhythm-bar');
-                bars.forEach((bar, i) => {
-                    if (beatCount % 4 === 0) {
-                        bar.style.height = `${80 + Math.random() * 60}px`;
-                    }
-                });
-                
-                // Make tree dance more on strong beats
-                if (beatCount % 4 === 0) {
-                    const tree = document.querySelector('.dancing-tree');
-                    tree.style.transform = `translateX(-50%) rotate(${beatCount % 8 === 0 ? '10deg' : '-10deg'})`;
-                }
-                
-                beatCount++;
-                
-                if (isPlaying) {
-                    setTimeout(() => playBeat(audioContext.currentTime + beatDuration), beatDuration * 500);
-                }
-            }
-            
-            function playKick(time) {
-                const oscillator = audioContext.createOscillator();
-                const gainNode = audioContext.createGain();
-                
-                oscillator.connect(gainNode);
-                gainNode.connect(audioContext.destination);
-                
-                oscillator.frequency.value = 100;
-                oscillator.type = 'sine';
-                
-                gainNode.gain.setValueAtTime(0.5, time);
-                gainNode.gain.exponentialRampToValueAtTime(0.01, time + 0.5);
-                
-                oscillator.start(time);
-                oscillator.stop(time + 0.5);
-            }
-            
-            function playSnare(time) {
-                const noise = audioContext.createBufferSource();
-                const noiseBuffer = audioContext.createBuffer(1, audioContext.sampleRate * 0.5, audioContext.sampleRate);
-                const noiseData = noiseBuffer.getChannelData(0);
-                
-                for (let i = 0; i < noiseData.length; i++) {
-                    noiseData[i] = Math.random() * 2 - 1;
-                }
-                
-                const noiseGain = audioContext.createGain();
-                noise.connect(noiseGain);
-                noiseGain.connect(audioContext.destination);
-                
-                const oscillator = audioContext.createOscillator();
-                const oscillatorGain = audioContext.createGain();
-                oscillator.connect(oscillatorGain);
-                oscillatorGain.connect(audioContext.destination);
-                
-                oscillator.frequency.value = 200;
-                oscillator.type = 'triangle';
-                
-                noiseGain.gain.setValueAtTime(0.5, time);
-                noiseGain.gain.exponentialRampToValueAtTime(0.01, time + 0.3);
-                
-                oscillatorGain.gain.setValueAtTime(0.3, time);
-                oscillatorGain.gain.exponentialRampToValueAtTime(0.01, time + 0.3);
-                
-                noise.buffer = noiseBuffer;
-                noise.start(time);
-                oscillator.start(time);
-                
-                noise.stop(time + 0.3);
-                oscillator.stop(time + 0.3);
-            }
-            
-            function playHiHat(time) {
-                const bufferSize = audioContext.sampleRate * 0.1;
-                const buffer = audioContext.createBuffer(1, bufferSize, audioContext.sampleRate);
-                const data = buffer.getChannelData(0);
-                
-                for (let i = 0; i < bufferSize; i++) {
-                    data[i] = Math.random() * 2 - 1;
-                }
-                
-                const source = audioContext.createBufferSource();
-                const gainNode = audioContext.createGain();
-                
-                source.buffer = buffer;
-                source.connect(gainNode);
-                gainNode.connect(audioContext.destination);
-                
-                gainNode.gain.setValueAtTime(0.3, time);
-                gainNode.gain.exponentialRampToValueAtTime(0.01, time + 0.1);
-                
-                source.start(time);
-                source.stop(time + 0.1);
-            }
-            
-            function playChristmasBell(time) {
-                const oscillator = audioContext.createOscillator();
-                const gainNode = audioContext.createGain();
-                
-                oscillator.connect(gainNode);
-                gainNode.connect(audioContext.destination);
-                
-                // Bell-like sound
-                oscillator.frequency.setValueAtTime(800, time);
-                oscillator.frequency.exponentialRampToValueAtTime(400, time + 1);
-                oscillator.type = 'sine';
-                
-                gainNode.gain.setValueAtTime(0.3, time);
-                gainNode.gain.exponentialRampToValueAtTime(0.01, time + 1);
-                
-                oscillator.start(time);
-                oscillator.stop(time + 1);
-                
-                // Visual feedback for bell
-                const bellElements = document.querySelectorAll('.dancer');
-                bellElements[4].style.transform = 'scale(1.5)';
-                setTimeout(() => {
-                    bellElements[4].style.transform = '';
-                }, 200);
-            }
-            
-            // Start the rhythm
-            playBeat(audioContext.currentTime);
-        }
-        
-        // Control functions
-        function setupControls() {
-            const musicToggle = document.getElementById('musicToggle');
-            const beatToggle = document.getElementById('beatToggle');
-            const visualizerToggle = document.getElementById('visualizerToggle');
-            const dancers = document.querySelectorAll('.dancer');
-            
-            // Music toggle
-            musicToggle.addEventListener('click', function() {
-                if (!isPlaying) {
-                    if (!audioContext) {
-                        audioContext = new (window.AudioContext || window.webkitAudioContext)();
-                    }
-                    isPlaying = true;
-                    playChristmasRhythm();
-                    this.style.background = '#4cd964';
-                    this.innerHTML = '🔊';
-                } else {
-                    isPlaying = false;
-                    this.style.background = '#ff6b6b';
-                    this.innerHTML = '🔇';
-                }
-            });
-            
-            // Beat toggle (animate everything)
-            let beatActive = true;
-            beatToggle.addEventListener('click', function() {
-                beatActive = !beatActive;
-                const animations = document.querySelectorAll('*');
-                
-                if (beatActive) {
-                    animations.forEach(el => {
-                        if (el.style) {
-                            el.style.animationPlayState = 'running';
-                        }
-                    });
-                    this.style.background = '#d4af37';
-                    this.innerHTML = '🎄';
-                } else {
-                    animations.forEach(el => {
-                        if (el.style) {
-                            el.style.animationPlayState = 'paused';
-                        }
-                    });
-                    this.style.background = '#666';
-                    this.innerHTML = '⏸️';
-                }
-            });
-            
-            // Visualizer toggle
-            visualizerToggle.addEventListener('click', function() {
-                visualizerActive = !visualizerActive;
-                if (visualizerActive) {
-                    this.style.background = '#1e90ff';
-                    this.innerHTML = '🌟';
-                } else {
-                    this.style.background = '#666';
-                    this.innerHTML = '🌙';
-                }
-            });
-            
-            // Dancer interactions
-            dancers.forEach((dancer, index) => {
-                dancer.addEventListener('click', function() {
-                    // Play different sound for each dancer
-                    playDancerSound(index);
-                    
-                    // Visual effect
-                    this.style.transform = 'scale(1.5) rotate(30deg)';
-                    setTimeout(() => {
-                        this.style.transform = '';
-                    }, 300);
-                    
-                    // Create sparkle
-                    createSparkle(this);
-                });
-            });
-        }
-        
-        function playDancerSound(index) {
+        // Play a musical note
+        function playNote(note, duration = 0.5, time = null) {
             if (!audioContext) return;
+            
+            time = time || audioContext.currentTime;
             
             const oscillator = audioContext.createOscillator();
             const gainNode = audioContext.createGain();
@@ -866,80 +616,225 @@
             oscillator.connect(gainNode);
             gainNode.connect(audioContext.destination);
             
-            // Different frequencies for different dancers
-            const frequencies = [523.25, 587.33, 659.25, 698.46, 783.99]; // C5, D5, E5, F5, G5
-            
-            oscillator.frequency.value = frequencies[index];
+            // Bell-like sound for Christmas
+            oscillator.frequency.value = noteFrequencies[note] || 440;
             oscillator.type = 'sine';
             
-            gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+            // Create bell envelope
+            gainNode.gain.setValueAtTime(0, time);
+            gainNode.gain.linearRampToValueAtTime(volume, time + 0.01);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, time + duration);
             
-            oscillator.start(audioContext.currentTime);
-            oscillator.stop(audioContext.currentTime + 0.5);
+            oscillator.start(time);
+            oscillator.stop(time + duration);
+            
+            // Visual feedback
+            createNoteVisual(note);
+            updateVisualizer();
+            
+            return oscillator;
         }
         
-        function createSparkle(element) {
-            const rect = element.getBoundingClientRect();
-            const x = rect.left + rect.width / 2;
-            const y = rect.top + rect.height / 2;
+        // Create visual note effect
+        function createNoteVisual(note) {
+            const notes = ['🎵', '🎶', '✨', '🌟', '💫'];
+            const noteEl = document.createElement('div');
+            noteEl.className = 'note';
+            noteEl.textContent = notes[Math.floor(Math.random() * notes.length)];
+            noteEl.style.left = `${Math.random() * 80 + 10}vw`;
+            noteEl.style.top = '80vh';
             
-            for (let i = 0; i < 5; i++) {
-                const sparkle = document.createElement('div');
-                sparkle.style.position = 'fixed';
-                sparkle.style.left = `${x}px`;
-                sparkle.style.top = `${y}px`;
-                sparkle.style.width = '10px';
-                sparkle.style.height = '10px';
-                sparkle.style.background = 'gold';
-                sparkle.style.borderRadius = '50%';
-                sparkle.style.pointerEvents = 'none';
-                sparkle.style.zIndex = '1000';
+            document.body.appendChild(noteEl);
+            
+            setTimeout(() => {
+                if (noteEl.parentNode) {
+                    noteEl.parentNode.removeChild(noteEl);
+                }
+            }, 2000);
+        }
+        
+        // Update visualizer bars
+        function updateVisualizer() {
+            const bars = document.querySelectorAll('.jingle-bar');
+            bars.forEach((bar, i) => {
+                const height = 20 + Math.random() * 100;
+                bar.style.height = `${height}px`;
+                bar.style.transition = 'height 0.1s ease';
                 
-                document.body.appendChild(sparkle);
-                
-                // Animate sparkle
-                const angle = (i / 5) * Math.PI * 2;
-                const distance = 50;
-                
-                sparkle.animate([
-                    { transform: 'translate(0, 0) scale(1)', opacity: 1 },
-                    { transform: `translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px) scale(0)`, opacity: 0 }
-                ], {
-                    duration: 1000,
-                    easing: 'ease-out'
-                });
-                
-                // Remove sparkle after animation
+                // Reset after animation
                 setTimeout(() => {
-                    if (sparkle.parentNode) {
-                        sparkle.parentNode.removeChild(sparkle);
+                    bar.style.height = '20px';
+                }, 100);
+            });
+            
+            // Update lights
+            const lights = document.querySelectorAll('.music-light');
+            lights.forEach(light => {
+                light.style.opacity = '1';
+                light.style.transform = 'scale(1.3)';
+                setTimeout(() => {
+                    light.style.opacity = '0.7';
+                    light.style.transform = 'scale(1)';
+                }, 200);
+            });
+        }
+        
+        // Play Jingle Bells melody
+        function playJingleBells() {
+            if (!isPlaying) return;
+            
+            let currentTime = audioContext.currentTime;
+            
+            // Play melody notes
+            jingleBellsMelody.forEach((noteData, index) => {
+                setTimeout(() => {
+                    if (!isPlaying) return;
+                    
+                    playNote(noteData.note, noteData.duration, currentTime + index * 0.5);
+                    
+                    // Highlight lyrics line based on melody progress
+                    if (index % 8 === 0) {
+                        updateLyricsLine(currentLine);
+                        currentLine = (currentLine + 1) % 8;
                     }
-                }, 1000);
+                }, index * 500);
+            });
+            
+            // Repeat the song
+            setTimeout(() => {
+                if (isPlaying) {
+                    playJingleBells();
+                }
+            }, jingleBellsMelody.length * 500);
+        }
+        
+        // Update lyrics highlighting
+        function updateLyricsLine(lineIndex) {
+            // Remove active class from all lines
+            document.querySelectorAll('.lyrics-line').forEach(line => {
+                line.classList.remove('active');
+            });
+            
+            // Add active class to current line
+            const currentLine = document.getElementById(`line${lineIndex + 1}`);
+            if (currentLine) {
+                currentLine.classList.add('active');
             }
         }
         
-        // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
-            createRhythmBars();
-            createLightRhythm();
-            createVisualizer();
-            setupControls();
+        // Setup interactive bells
+        function setupBells() {
+            const bells = document.querySelectorAll('.bell');
             
-            // Auto-start music after user interaction
-            document.body.addEventListener('click', function initMusic() {
-                const musicBtn = document.getElementById('musicToggle');
+            bells.forEach(bell => {
+                bell.addEventListener('click', function() {
+                    const note = this.getAttribute('data-note');
+                    playNote(note, 0.8);
+                    
+                    // Visual feedback
+                    this.style.transform = 'scale(1.3)';
+                    this.style.background = 'linear-gradient(45deg, #ff6b6b, #ffd700)';
+                    
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1)';
+                        this.style.background = 'linear-gradient(45deg, #d4af37, #ffd700)';
+                    }, 300);
+                });
+            });
+        }
+        
+        // Setup music controls
+        function setupControls() {
+            const playBtn = document.getElementById('playBtn');
+            const volumeBtn = document.getElementById('volumeBtn');
+            const lyricsBtn = document.getElementById('lyricsBtn');
+            
+            // Play/Pause button
+            playBtn.addEventListener('click', function() {
                 if (!isPlaying) {
-                    musicBtn.click();
+                    // Start music
+                    if (!audioContext) {
+                        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                    }
+                    
+                    isPlaying = true;
+                    this.classList.add('active');
+                    this.innerHTML = '⏸️';
+                    playJingleBells();
+                    
+                    // Auto-scroll lyrics
+                    startLyricsScrolling();
+                } else {
+                    // Stop music
+                    isPlaying = false;
+                    this.classList.remove('active');
+                    this.innerHTML = '▶️';
+                    stopLyricsScrolling();
                 }
-                document.body.removeEventListener('click', initMusic);
             });
             
-            // Console greeting with rhythm
-            console.log('%c🎵 M E R R Y  C H R I S T M A S 🎵', 
+            // Volume button
+            volumeBtn.addEventListener('click', function() {
+                volume = volume === 0.3 ? 0.1 : volume === 0.1 ? 0.5 : 0.3;
+                this.innerHTML = volume === 0.1 ? '🔈' : volume === 0.3 ? '🔉' : '🔊';
+            });
+            
+            // Lyrics button
+            let lyricsVisible = true;
+            lyricsBtn.addEventListener('click', function() {
+                const lyricsContainer = document.getElementById('lyricsContainer');
+                lyricsVisible = !lyricsVisible;
+                
+                if (lyricsVisible) {
+                    lyricsContainer.style.display = 'block';
+                    this.innerHTML = '📜';
+                } else {
+                    lyricsContainer.style.display = 'none';
+                    this.innerHTML = '📝';
+                }
+            });
+            
+            // Auto-start music on first click
+            document.body.addEventListener('click', function initMusic() {
+                if (!isPlaying) {
+                    playBtn.click();
+                }
+                document.body.removeEventListener('click', initMusic);
+            }, { once: true });
+        }
+        
+        // Lyrics auto-scrolling
+        let lyricsInterval;
+        function startLyricsScrolling() {
+            currentLine = 0;
+            lyricsInterval = setInterval(() => {
+                updateLyricsLine(currentLine);
+                currentLine = (currentLine + 1) % 8;
+            }, 2000);
+        }
+        
+        function stopLyricsScrolling() {
+            clearInterval(lyricsInterval);
+            document.querySelectorAll('.lyrics-line').forEach(line => {
+                line.classList.remove('active');
+            });
+        }
+        
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', function() {
+            createVisualizer();
+            createMusicLights();
+            createSnowflakes();
+            setupBells();
+            setupControls();
+            
+            // Console greeting
+            console.log('%c🎵 JINGLE BELLS 🎵', 
                 'font-size: 24px; background: linear-gradient(90deg, red, green, gold); -webkit-background-clip: text; color: transparent; font-weight: bold;');
-            console.log('%c🎄 Tap the dancers to add to the Christmas rhythm! 🎄', 
+            console.log('%cMerry Christmas from Cre8learn Institute!', 
                 'color: #d4af37; font-size: 16px;');
+            console.log('%cClick the bells to play notes!', 
+                'color: #4cd964; font-size: 14px;');
         });
     </script>
 </body>
