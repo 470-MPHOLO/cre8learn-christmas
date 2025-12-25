@@ -21,7 +21,6 @@
             line-height: 1.6;
         }
         
-        /* Soft background */
         .bg-overlay {
             position: fixed;
             top: 0;
@@ -35,7 +34,6 @@
             z-index: -1;
         }
         
-        /* Music Control */
         .music-control {
             position: fixed;
             top: 20px;
@@ -65,7 +63,6 @@
             box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
         }
         
-        /* Main Container */
         .container {
             max-width: 800px;
             margin: 0 auto;
@@ -73,7 +70,7 @@
             position: relative;
         }
         
-        /* Header */
+      
         .header {
             text-align: center;
             padding: 40px 0;
@@ -114,7 +111,6 @@
             letter-spacing: 3px;
         }
         
-        /* Content */
         .content {
             padding: 30px 0;
         }
@@ -142,7 +138,6 @@
             border-radius: 0 5px 5px 0;
         }
         
-        /* Simple Visual */
         .visual {
             text-align: center;
             margin: 40px 0;
@@ -161,7 +156,6 @@
             50% { transform: scale(1.05); }
         }
         
-        /* Footer */
         footer {
             text-align: center;
             padding: 40px 0;
@@ -200,7 +194,6 @@
             display: inline-block;
         }
         
-        /* Firefly Effects */
         .firefly {
             position: fixed;
             width: 4px;
@@ -212,7 +205,7 @@
             box-shadow: 0 0 10px 2px rgba(212, 175, 55, 0.5);
         }
         
-        /* Subtle Snow */
+       
         .snow {
             position: fixed;
             width: 2px;
@@ -224,7 +217,6 @@
             opacity: 0.8;
         }
         
-        /* Responsive */
         @media (max-width: 768px) {
             .christmas-title {
                 font-size: 2.5rem;
@@ -241,15 +233,13 @@
     </style>
 </head>
 <body>
-    <!-- Background -->
+  
     <div class="bg-overlay"></div>
     
-    <!-- Music Control -->
     <div class="music-control">
         <button class="music-btn" id="musicBtn">♪</button>
     </div>
     
-    <!-- Animated Elements -->
     <div id="fireflies"></div>
     <div id="snow"></div>
     
@@ -301,18 +291,15 @@
     </div>
 
     <script>
-        // Simple, slow Christmas instrumental
         let audioContext;
         let isPlaying = false;
         let volume = 0.15; // Very soft volume
         
-        // Create peaceful background music
         function createChristmasInstrumental() {
             if (!audioContext) {
                 audioContext = new (window.AudioContext || window.webkitAudioContext)();
             }
             
-            // Slow, gentle chord progression for Christmas
             const chords = [
                 {notes: ['C', 'E', 'G'], duration: 4},  // C major
                 {notes: ['F', 'A', 'C'], duration: 4},  // F major
@@ -323,8 +310,7 @@
                 {notes: ['G', 'B', 'D'], duration: 4},  // G major
                 {notes: ['C', 'E', 'G'], duration: 8}   // C major (longer)
             ];
-            
-            // Note frequencies (middle octave)
+          
             const noteFreq = {
                 'C': 261.63,
                 'D': 293.66,
@@ -344,22 +330,18 @@
                 const chord = chords[chordIndex];
                 const chordTime = startTime;
                 
-                // Play each note in the chord
                 chord.notes.forEach(note => {
                     playChordNote(noteFreq[note], chordTime, chord.duration);
                 });
                 
-                // Play a gentle bell-like melody on top
                 setTimeout(() => {
                     if (!isPlaying) return;
                     playMelodyNote(chordIndex, chordTime + 1);
                 }, 1000);
                 
-                // Move to next chord
+               
                 chordIndex = (chordIndex + 1) % chords.length;
                 startTime += chord.duration;
-                
-                // Schedule next chord
                 setTimeout(playNextChord, chord.duration * 1000);
             }
             
@@ -371,9 +353,8 @@
                 gainNode.connect(audioContext.destination);
                 
                 oscillator.frequency.value = frequency;
-                oscillator.type = 'sine'; // Soft sine wave
+                oscillator.type = 'sine';
                 
-                // Very gentle envelope
                 gainNode.gain.setValueAtTime(0, startTime);
                 gainNode.gain.linearRampToValueAtTime(volume * 0.3, startTime + 0.5);
                 gainNode.gain.exponentialRampToValueAtTime(0.001, startTime + duration - 0.5);
@@ -384,7 +365,7 @@
             }
             
             function playMelodyNote(chordIndex, startTime) {
-                // Simple, slow melody notes
+        
                 const melodyNotes = ['C', 'E', 'G', 'E', 'C', 'A', 'G', 'E'];
                 const note = melodyNotes[chordIndex % melodyNotes.length];
                 
@@ -397,7 +378,6 @@
                 oscillator.frequency.value = noteFreq[note] * 2; // Higher octave
                 oscillator.type = 'triangle'; // Soft triangle wave
                 
-                // Even softer melody
                 gainNode.gain.setValueAtTime(0, startTime);
                 gainNode.gain.linearRampToValueAtTime(volume * 0.2, startTime + 0.2);
                 gainNode.gain.exponentialRampToValueAtTime(0.001, startTime + 2);
@@ -409,7 +389,7 @@
             return playNextChord;
         }
         
-        // Create fireflies
+        
         function createFireflies() {
             const container = document.getElementById('fireflies');
             for (let i = 0; i < 8; i++) {
@@ -419,7 +399,6 @@
                 firefly.style.left = `${Math.random() * 100}vw`;
                 firefly.style.top = `${Math.random() * 100}vh`;
                 
-                // Gentle floating animation
                 firefly.animate([
                     { transform: 'translate(0, 0)', opacity: 0.3 },
                     { transform: `translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px)`, opacity: 0.8 },
@@ -434,7 +413,7 @@
             }
         }
         
-        // Create gentle snow
+       
         function createSnow() {
             const container = document.getElementById('snow');
             for (let i = 0; i < 20; i++) {
@@ -443,7 +422,7 @@
                 
                 flake.style.left = `${Math.random() * 100}vw`;
                 
-                // Very slow falling animation
+              
                 flake.animate([
                     { transform: 'translateY(-100vh)', opacity: 0 },
                     { transform: 'translateY(100vh)', opacity: 0.8 }
@@ -458,12 +437,11 @@
             }
         }
         
-        // Setup music control
+        
         function setupMusic() {
             const musicBtn = document.getElementById('musicBtn');
             let playMusic;
             
-            // Initialize music on first click
             musicBtn.addEventListener('click', function() {
                 if (!audioContext) {
                     audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -471,13 +449,11 @@
                 }
                 
                 if (isPlaying) {
-                    // Stop music
                     isPlaying = false;
                     this.innerHTML = '♪';
                     this.style.color = '#d4af37';
                     this.style.borderColor = 'rgba(212, 175, 55, 0.5)';
                 } else {
-                    // Start music
                     isPlaying = true;
                     this.innerHTML = '♫';
                     this.style.color = '#ffd700';
@@ -486,7 +462,7 @@
                 }
             });
             
-            // Auto-start music after user interaction
+            
             document.body.addEventListener('click', function initMusic() {
                 if (!isPlaying) {
                     musicBtn.click();
@@ -495,7 +471,6 @@
             }, { once: true });
         }
         
-        // Initialize everything
         document.addEventListener('DOMContentLoaded', function() {
             createFireflies();
             createSnow();
